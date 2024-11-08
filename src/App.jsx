@@ -13,7 +13,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import CompanyDashboard from "./components/dashboards/CompanyDashboard";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchFromApi } from "./features/example/exampleSlice";
+import { fetchFromApi } from './api/jsonApi';
 
 // Auth pages (you'll need to create these)
 
