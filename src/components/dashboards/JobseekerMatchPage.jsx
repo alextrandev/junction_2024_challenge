@@ -36,7 +36,78 @@ const SidebarCard = styled(Card)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
+import { Company } from "../../../db.json";
+
 const JobseekerMatchPage = () => {
+  const company = Company[0];
+
+  const matchScoreSections = [
+    {
+      title: "Skills & Experience",
+      score: "90%",
+      details: [
+        `Required Skills: ${company.jobPosition.selectionCriteria.skills.join(
+          ", "
+        )}`,
+        `Required Experience: ${company.jobPosition.selectionCriteria.experience}`,
+      ],
+    },
+    {
+      title: "Work Environment",
+      score: "85%",
+      details: `Work Options: ${company.workingConditions.flexibility.join(
+        ", "
+      )}`,
+    },
+    {
+      title: "Work Style",
+      score: "90%",
+      details: company.workStyles,
+    },
+    {
+      title: "Values & Culture",
+      score: "85%",
+      details: [
+        company.workingConditions.culture,
+        `Values: ${company.values.join(", ")}`,
+      ],
+    },
+  ];
+
+  const detailedSections = [
+    {
+      title: "Skills & Experience",
+      details: [
+        `Position: ${company.jobPosition.title}`,
+        `Required Skills: ${company.jobPosition.selectionCriteria.skills.join(
+          ", "
+        )}`,
+        `Required Experience: ${company.jobPosition.selectionCriteria.experience}`,
+        `Rating: ${company.jobPosition.selectionCriteria.rating}`,
+      ],
+    },
+    {
+      title: "Work Environment & Conditions",
+      details: [
+        `Location: ${company.jobPosition.selectionCriteria.location.postcode} (${company.jobPosition.selectionCriteria.location.radius} radius)`,
+        `Work Options: ${company.workingConditions.location.join(", ")}`,
+        `Salary Range: ${company.jobPosition.salary.min}-${company.jobPosition.salary.max} ${company.jobPosition.salary.currency}`,
+      ],
+    },
+    {
+      title: "Perks & Benefits",
+      details: company.jobPosition.benefits.map((benefit) => `• ${benefit}`),
+    },
+    {
+      title: "Work Style & Values",
+      details: [
+        `Work Style: ${company.workStyles.join(", ")}`,
+        `Values: ${company.values.join(", ")}`,
+        `Culture: ${company.workingConditions.culture}`,
+      ],
+    },
+  ];
+
   return (
     <Container maxWidth="lg">
       {/* Header */}
@@ -62,28 +133,7 @@ const JobseekerMatchPage = () => {
           {/* Match Score Breakdown */}
           <Box sx={{ mb: 4 }}>
             <Grid container spacing={2}>
-              {[
-                {
-                  title: "Skills & Experience",
-                  score: "90%",
-                  details: ["Skills: React, CSS", "Experience: 3+ years"],
-                },
-                {
-                  title: "Work Environment",
-                  score: "80%",
-                  details: ["Remote, Flexible", "Core hours"],
-                },
-                {
-                  title: "Mental Well-being",
-                  score: "85%",
-                  details: ["Therapy support", "Well-being days"],
-                },
-                {
-                  title: "Workplace Culture",
-                  score: "90%",
-                  details: ["Values: Innovation", "DEI-focused"],
-                },
-              ].map((section) => (
+              {matchScoreSections.map((section) => (
                 <Grid item xs={12} sm={6} key={section.title}>
                   <MatchScoreCard elevation={2}>
                     <Typography variant="h6" gutterBottom>
@@ -92,11 +142,17 @@ const JobseekerMatchPage = () => {
                     <Typography className="matchScore" gutterBottom>
                       {section.score}
                     </Typography>
-                    {section.details.map((detail) => (
-                      <Typography key={detail} variant="body2">
-                        • {detail}
+                    {Array.isArray(section.details) ? (
+                      section.details.map((detail) => (
+                        <Typography key={detail} variant="body2">
+                          • {detail}
+                        </Typography>
+                      ))
+                    ) : (
+                      <Typography variant="body2">
+                        • {section.details}
                       </Typography>
-                    ))}
+                    )}
                   </MatchScoreCard>
                 </Grid>
               ))}
@@ -104,38 +160,7 @@ const JobseekerMatchPage = () => {
           </Box>
 
           {/* Detailed Breakdown */}
-          {[
-            {
-              title: "Skills & Experience",
-              details: [
-                "Required Skills: React, JavaScript, CSS",
-                "Your Skills: React (Advanced), JavaScript (Mid)",
-                "Experience: 3+ years required, 4 years you have",
-              ],
-            },
-            {
-              title: "Work Environment & Conditions",
-              details: [
-                "Preferred: Remote",
-                "Company: Remote with flexible hours",
-              ],
-            },
-            {
-              title: "Mental Well-being",
-              details: [
-                "Company offers well-being days, therapy support",
-                "Quiet spaces for focused work",
-              ],
-            },
-            {
-              title: "Workplace Culture & Values",
-              details: [
-                "Values: Diversity, Innovation",
-                "DEI: Active DEI programs, inclusive practices",
-                "Community: Volunteering opportunities",
-              ],
-            },
-          ].map((section) => (
+          {detailedSections.map((section) => (
             <DetailCard key={section.title} elevation={2}>
               <Typography variant="h6" gutterBottom>
                 {section.title}
