@@ -43,20 +43,16 @@ const JobseekerMatchPage = () => {
       <DetailCard elevation={2}>
         <Grid container alignItems="center" spacing={2}>
           <Grid item>
-            <Avatar
-              src="/profile.png"
-              alt="candidate"
-              sx={{ width: 64, height: 64 }}
-            />
+            <Avatar src="/img.png" alt="match" sx={{ width: 64, height: 64 }} />
           </Grid>
           <Grid item xs>
-            <Typography variant="subtitle1">Frontend Developer</Typography>
+            <Typography variant="subtitle1">Matching company</Typography>
           </Grid>
           <Grid item>
             <Typography variant="h4" color="primary">
               85% Match
             </Typography>
-            <Typography variant="subtitle2">Candidate Match Score</Typography>
+            <Typography variant="subtitle2">Overall Score</Typography>
           </Grid>
         </Grid>
       </DetailCard>
@@ -68,24 +64,24 @@ const JobseekerMatchPage = () => {
             <Grid container spacing={2}>
               {[
                 {
-                  title: "Technical Skills",
+                  title: "Skills & Experience",
                   score: "90%",
-                  details: ["React Expert", "4 years experience"],
+                  details: ["Skills: React, CSS", "Experience: 3+ years"],
                 },
                 {
-                  title: "Work Preferences",
+                  title: "Work Environment",
                   score: "80%",
-                  details: ["Prefers Remote", "Flexible hours"],
+                  details: ["Remote, Flexible", "Core hours"],
                 },
                 {
-                  title: "Career Goals",
+                  title: "Mental Well-being",
                   score: "85%",
-                  details: ["Growth focused", "Leadership track"],
+                  details: ["Therapy support", "Well-being days"],
                 },
                 {
-                  title: "Cultural Alignment",
+                  title: "Workplace Culture",
                   score: "90%",
-                  details: ["Team player", "Innovation driven"],
+                  details: ["Values: Innovation", "DEI-focused"],
                 },
               ].map((section) => (
                 <Grid item xs={12} sm={6} key={section.title}>
@@ -110,35 +106,33 @@ const JobseekerMatchPage = () => {
           {/* Detailed Breakdown */}
           {[
             {
-              title: "Technical Skills & Experience",
+              title: "Skills & Experience",
               details: [
-                "Primary Skills: React, JavaScript, CSS",
-                "Years of Experience: 4 years",
-                "Recent Projects: E-commerce platforms, SaaS applications",
+                "Required Skills: React, JavaScript, CSS",
+                "Your Skills: React (Advanced), JavaScript (Mid)",
+                "Experience: 3+ years required, 4 years you have",
               ],
             },
             {
-              title: "Work Style & Preferences",
+              title: "Work Environment & Conditions",
               details: [
-                "Preferred Work Model: Remote",
-                "Working Hours: Flexible schedule",
-                "Team Size: 5-10 members",
+                "Preferred: Remote",
+                "Company: Remote with flexible hours",
               ],
             },
             {
-              title: "Career Aspirations",
+              title: "Mental Well-being",
               details: [
-                "Short-term: Technical Lead",
-                "Long-term: Engineering Manager",
-                "Learning Goals: System Architecture, Team Leadership",
+                "Company offers well-being days, therapy support",
+                "Quiet spaces for focused work",
               ],
             },
             {
-              title: "Cultural Values & Interests",
+              title: "Workplace Culture & Values",
               details: [
-                "Values: Collaboration, Innovation",
-                "Interests: Open Source, Mentoring",
-                "Communication Style: Direct and transparent",
+                "Values: Diversity, Innovation",
+                "DEI: Active DEI programs, inclusive practices",
+                "Community: Volunteering opportunities",
               ],
             },
           ].map((section) => (
@@ -159,7 +153,7 @@ const JobseekerMatchPage = () => {
             <Grid container spacing={2}>
               <Grid item>
                 <Button variant="contained" size="large">
-                  Schedule Interview
+                  Apply Now
                 </Button>
               </Grid>
               <Grid item>
@@ -168,7 +162,7 @@ const JobseekerMatchPage = () => {
                   size="large"
                   startIcon={<BookmarkBorderIcon />}
                 >
-                  Save Profile
+                  Save Job
                 </Button>
               </Grid>
             </Grid>
@@ -179,14 +173,14 @@ const JobseekerMatchPage = () => {
         <Grid item xs={12} md={3}>
           <SidebarCard elevation={2}>
             <Typography variant="h6" gutterBottom>
-              Candidate Overview
+              Quick Navigation
             </Typography>
             <List>
               {[
-                "Technical Skills",
-                "Work Experience",
-                "Career Goals",
-                "Cultural Fit",
+                "Skills & Experience",
+                "Work Environment & Conditions",
+                "Mental Well-being & Support",
+                "Workplace Culture & Values",
               ].map((item) => (
                 <ListItem
                   key={item}
@@ -205,7 +199,7 @@ const JobseekerMatchPage = () => {
               startIcon={<EmailIcon />}
               sx={{ mt: 2 }}
             >
-              Contact Candidate
+              Contact HR
             </Button>
           </SidebarCard>
         </Grid>
