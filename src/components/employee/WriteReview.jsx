@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
   Box,
   Container,
@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 
 const WriteReview = () => {
-  const [ratings, setRatings] = React.useState({
+  const [ratings, setRatings] = useState({
     workEnvironment: 3,
     workLifeBalance: 3,
     management: 3,
@@ -17,8 +17,14 @@ const WriteReview = () => {
     compensationBenefits: 3,
   });
 
+  const [hashcode, setHashcode] = useState(""); // State for hashcode
+
   const handleSliderChange = (event, newValue, name) => {
     setRatings({ ...ratings, [name]: newValue });
+  };
+
+  const handleHashcodeChange = (event) => {
+    setHashcode(event.target.value); // Update hashcode state
   };
 
   return (
@@ -27,6 +33,15 @@ const WriteReview = () => {
         This is your first review for Company Name. You can write a new review
         yearly.
       </Typography>
+
+      {/* Input field for hashcode */}
+      <TextField
+        label="Enter Your Unique Hashcode"
+        value={hashcode}
+        onChange={handleHashcodeChange}
+        sx={{ mb: 2, width: "100%" }}
+      />
+
       <Typography variant="body1" sx={{ mt: 4, mb: 2, textAlign: "left" }}>
         Please rate the following criteria:
       </Typography>
