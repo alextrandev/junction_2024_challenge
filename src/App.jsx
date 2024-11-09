@@ -15,11 +15,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchFromApi } from "./api/jsonApi";
 import JobSeekerDashboard from "./components/dashboards/JobSeekerDashboard";
-import WriteReviewTooSoon from "./components/WriteReviewTooSoon";
-import WriteReview from "./components/WriteReview";
+import WriteReviewTooSoon from "./components/employee/WriteReviewTooSoon";
+import WriteReview from "./components/employee/WriteReview";
 import EmployeeDashboard from "./components/dashboards/EmployeeDashboard";
 import JobSearch from "./components/jobseeker/JobSearch";
-import EmployeeReview from "./components/employee/EmployeeReview";
 
 // Auth pages (you'll need to create these)
 
@@ -90,28 +89,21 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="review"
-              element={
-                <ProtectedRoute userType="employee">
-                  <EmployeeReview />
-                </ProtectedRoute>
-              }
-            />
+
             <Route
               path="congratulations"
               element={
-                // <ProtectedRoute userType="employee">
-                <WriteReviewTooSoon />
-                // </ProtectedRoute>
+                <ProtectedRoute userType="employee">
+                  <WriteReviewTooSoon />
+                </ProtectedRoute>
               }
             />
             <Route
               path="writereview"
               element={
-                // <ProtectedRoute userType="employee">
-                <WriteReview />
-                // </ProtectedRoute>
+                <ProtectedRoute userType="employee">
+                  <WriteReview />
+                </ProtectedRoute>
               }
             />
           </Route>
