@@ -71,7 +71,7 @@ const JobCard = ({ job }) => {
     };
   }
   return (
-    <Card sx={{ display: "flex", flexDirection: "column", gap: 2, padding: 2 }}>
+    <Card sx={{ display: "flex", flexDirection: "column", gap: 2, padding: 2, maxWidth:"600px" }}>
       <CardContent>
         <Box sx={{ flexGrow: 1 }}>
           <Grid2 container spacing={2}>

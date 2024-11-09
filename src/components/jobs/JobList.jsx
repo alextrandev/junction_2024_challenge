@@ -25,10 +25,13 @@ const JobList = () => {
       {!loading && !error && jobs.length === 0 && (
         <Typography>No jobs available</Typography>
       )}
-      <List>
+      <List sx={{ width: "100%", bgcolor: "background.paper" }}>
         {jobs.map((job) => (
-          <ListItem key={job.id}>
-            <JobCard job={job} />
+          <ListItem
+            sx={{ width: "100%", justifyContent: "center" }}
+            key={job.id}
+          >
+            <JobCard sx={{ width: "100%" }} job={job} />
           </ListItem>
         ))}
       </List>
