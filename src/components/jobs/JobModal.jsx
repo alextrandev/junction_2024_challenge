@@ -8,7 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { clearSelectedJob } from "../../store/jobsSlice";
+import { clearSelectedJob } from "../../store/jobSlice";
 
 function JobModal() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ function JobModal() {
   if (!job) return null;
 
   return (
-    <Dialog open={Boolean(job)} onClose={() => dispatch(clearSelectedJob())}>
+    <Dialog >
       <DialogTitle>{job.jobPosition.title}</DialogTitle>
       <DialogContent>
         <Typography variant="h6">Company: {job.name}</Typography>
