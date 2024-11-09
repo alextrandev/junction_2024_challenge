@@ -36,23 +36,33 @@ const SidebarCard = styled(Card)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
+import { JobSeeker } from "../../../db.json";
+
 const CompanyMatchPage = () => {
+  const candidate = JobSeeker[0];
   return (
     <Container maxWidth="lg">
       {/* Header */}
       <DetailCard elevation={2}>
         <Grid container alignItems="center" spacing={2}>
           <Grid item>
-            <Avatar src="/img.png" alt="match" sx={{ width: 64, height: 64 }} />
+            <Avatar
+              src="/profile.png"
+              alt={candidate.headline}
+              sx={{ width: 64, height: 64 }}
+            />
           </Grid>
           <Grid item xs>
-            <Typography variant="subtitle1">Frontend Developer</Typography>
+            <Typography variant="subtitle1">{candidate.headline}</Typography>
+            <Typography variant="body2">
+              {candidate.experience} • {candidate.distance}
+            </Typography>
           </Grid>
           <Grid item>
             <Typography variant="h4" color="primary">
               85% Match
             </Typography>
-            <Typography variant="subtitle2">Overall Score</Typography>
+            <Typography variant="subtitle2">Candidate Match Score</Typography>
           </Grid>
         </Grid>
       </DetailCard>
@@ -64,24 +74,24 @@ const CompanyMatchPage = () => {
             <Grid container spacing={2}>
               {[
                 {
-                  title: "Skills & Experience",
+                  title: "Technical Skills",
                   score: "90%",
-                  details: ["Skills: React, CSS", "Experience: 3+ years"],
+                  details: candidate.skills,
                 },
                 {
-                  title: "Work Environment",
+                  title: "Work Preferences",
                   score: "80%",
-                  details: ["Remote, Flexible", "Core hours"],
+                  details: candidate.workingConditions.flexibility,
                 },
                 {
-                  title: "Mental Well-being",
+                  title: "Work Style",
                   score: "85%",
-                  details: ["Therapy support", "Well-being days"],
+                  details: candidate.workStyles,
                 },
                 {
-                  title: "Workplace Culture",
+                  title: "Cultural Values",
                   score: "90%",
-                  details: ["Values: Innovation", "DEI-focused"],
+                  details: candidate.values,
                 },
               ].map((section) => (
                 <Grid item xs={12} sm={6} key={section.title}>
@@ -106,33 +116,41 @@ const CompanyMatchPage = () => {
           {/* Detailed Breakdown */}
           {[
             {
-              title: "Skills & Experience",
+              title: "Technical Skills & Experience",
               details: [
-                "Required Skills: React, JavaScript, CSS",
-                "Your Skills: React (Advanced), JavaScript (Mid)",
-                "Experience: 3+ years required, 4 years you have",
+                `Primary Skills: ${candidate.skills.join(", ")}`,
+                `Years of Experience: ${candidate.experience}`,
+                `Recent Position: ${candidate.positionHistory[0].position} at ${candidate.positionHistory[0].company} (${candidate.positionHistory[0].duration})`,
               ],
             },
             {
-              title: "Work Environment & Conditions",
+              title: "Work Style & Preferences",
               details: [
-                "Preferred: Remote",
-                "Company: Remote with flexible hours",
+                `Location: ${candidate.workingConditions.location.preferred}`,
+                `Flexibility: ${candidate.workingConditions.flexibility.join(
+                  ", "
+                )}`,
+                `Salary Range: ${candidate.workingConditions.salaryExpectations.min}-${candidate.workingConditions.salaryExpectations.max} ${candidate.workingConditions.salaryExpectations.currency}`,
               ],
             },
             {
-              title: "Mental Well-being",
+              title: "Benefits & Culture",
               details: [
-                "Company offers well-being days, therapy support",
-                "Quiet spaces for focused work",
+                `Expected Benefits: ${candidate.workingConditions.benefitExpectations.join(
+                  ", "
+                )}`,
+                `Work Culture: ${candidate.workingConditions.culture}`,
+                `Location Options: ${candidate.workingConditions.location.acceptance.join(
+                  ", "
+                )}`,
               ],
             },
             {
-              title: "Workplace Culture & Values",
+              title: "Values & Work Style",
               details: [
-                "Values: Diversity, Innovation",
-                "DEI: Active DEI programs, inclusive practices",
-                "Community: Volunteering opportunities",
+                `Core Values: ${candidate.values.join(", ")}`,
+                `Work Style: ${candidate.workStyles.join(", ")}`,
+                `Current Distance: ${candidate.distance}`,
               ],
             },
           ].map((section) => (
@@ -147,13 +165,12 @@ const CompanyMatchPage = () => {
               ))}
             </DetailCard>
           ))}
-
           {/* Call-to-Action */}
           <DetailCard elevation={2}>
             <Grid container spacing={2}>
               <Grid item>
                 <Button variant="contained" size="large">
-                  Apply Now
+                  Schedule Interview
                 </Button>
               </Grid>
               <Grid item>
@@ -162,7 +179,7 @@ const CompanyMatchPage = () => {
                   size="large"
                   startIcon={<BookmarkBorderIcon />}
                 >
-                  Save Job
+                  Save Profile
                 </Button>
               </Grid>
             </Grid>
@@ -173,14 +190,14 @@ const CompanyMatchPage = () => {
         <Grid item xs={12} md={3}>
           <SidebarCard elevation={2}>
             <Typography variant="h6" gutterBottom>
-              Quick Navigation
+              Candidate Overview
             </Typography>
             <List>
               {[
-                "Skills & Experience",
-                "Work Environment & Conditions",
-                "Mental Well-being & Support",
-                "Workplace Culture & Values",
+                "Technical Skills",
+                "Work Experience",
+                "Career Goals",
+                "Cultural Fit",
               ].map((item) => (
                 <ListItem
                   key={item}
@@ -199,7 +216,7 @@ const CompanyMatchPage = () => {
               startIcon={<EmailIcon />}
               sx={{ mt: 2 }}
             >
-              Contact HR
+              Contact Candidate
             </Button>
           </SidebarCard>
         </Grid>

@@ -36,27 +36,94 @@ const SidebarCard = styled(Card)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
+import { Company } from "../../../db.json";
+
 const JobseekerMatchPage = () => {
+  const company = Company[0];
+
+  const matchScoreSections = [
+    {
+      title: "Skills & Experience",
+      score: "90%",
+      details: [
+        `Required Skills: ${company.jobPosition.selectionCriteria.skills.join(
+          ", "
+        )}`,
+        `Required Experience: ${company.jobPosition.selectionCriteria.experience}`,
+      ],
+    },
+    {
+      title: "Work Environment",
+      score: "85%",
+      details: `Work Options: ${company.workingConditions.flexibility.join(
+        ", "
+      )}`,
+    },
+    {
+      title: "Work Style",
+      score: "90%",
+      details: company.workStyles,
+    },
+    {
+      title: "Values & Culture",
+      score: "85%",
+      details: [
+        company.workingConditions.culture,
+        `Values: ${company.values.join(", ")}`,
+      ],
+    },
+  ];
+
+  const detailedSections = [
+    {
+      title: "Skills & Experience",
+      details: [
+        `Position: ${company.jobPosition.title}`,
+        `Required Skills: ${company.jobPosition.selectionCriteria.skills.join(
+          ", "
+        )}`,
+        `Required Experience: ${company.jobPosition.selectionCriteria.experience}`,
+        `Rating: ${company.jobPosition.selectionCriteria.rating}`,
+      ],
+    },
+    {
+      title: "Work Environment & Conditions",
+      details: [
+        `Location: ${company.jobPosition.selectionCriteria.location.postcode} (${company.jobPosition.selectionCriteria.location.radius} radius)`,
+        `Work Options: ${company.workingConditions.location.join(", ")}`,
+        `Salary Range: ${company.jobPosition.salary.min}-${company.jobPosition.salary.max} ${company.jobPosition.salary.currency}`,
+      ],
+    },
+    {
+      title: "Perks & Benefits",
+      details: company.jobPosition.benefits.map((benefit) => `• ${benefit}`),
+    },
+    {
+      title: "Work Style & Values",
+      details: [
+        `Work Style: ${company.workStyles.join(", ")}`,
+        `Values: ${company.values.join(", ")}`,
+        `Culture: ${company.workingConditions.culture}`,
+      ],
+    },
+  ];
+
   return (
     <Container maxWidth="lg">
       {/* Header */}
       <DetailCard elevation={2}>
         <Grid container alignItems="center" spacing={2}>
           <Grid item>
-            <Avatar
-              src="/profile.png"
-              alt="candidate"
-              sx={{ width: 64, height: 64 }}
-            />
+            <Avatar src="/img.png" alt="match" sx={{ width: 64, height: 64 }} />
           </Grid>
           <Grid item xs>
-            <Typography variant="subtitle1">Frontend Developer</Typography>
+            <Typography variant="subtitle1">Matching company</Typography>
           </Grid>
           <Grid item>
             <Typography variant="h4" color="primary">
               85% Match
             </Typography>
-            <Typography variant="subtitle2">Candidate Match Score</Typography>
+            <Typography variant="subtitle2">Overall Score</Typography>
           </Grid>
         </Grid>
       </DetailCard>
@@ -66,28 +133,7 @@ const JobseekerMatchPage = () => {
           {/* Match Score Breakdown */}
           <Box sx={{ mb: 4 }}>
             <Grid container spacing={2}>
-              {[
-                {
-                  title: "Technical Skills",
-                  score: "90%",
-                  details: ["React Expert", "4 years experience"],
-                },
-                {
-                  title: "Work Preferences",
-                  score: "80%",
-                  details: ["Prefers Remote", "Flexible hours"],
-                },
-                {
-                  title: "Career Goals",
-                  score: "85%",
-                  details: ["Growth focused", "Leadership track"],
-                },
-                {
-                  title: "Cultural Alignment",
-                  score: "90%",
-                  details: ["Team player", "Innovation driven"],
-                },
-              ].map((section) => (
+              {matchScoreSections.map((section) => (
                 <Grid item xs={12} sm={6} key={section.title}>
                   <MatchScoreCard elevation={2}>
                     <Typography variant="h6" gutterBottom>
@@ -96,11 +142,17 @@ const JobseekerMatchPage = () => {
                     <Typography className="matchScore" gutterBottom>
                       {section.score}
                     </Typography>
-                    {section.details.map((detail) => (
-                      <Typography key={detail} variant="body2">
-                        • {detail}
+                    {Array.isArray(section.details) ? (
+                      section.details.map((detail) => (
+                        <Typography key={detail} variant="body2">
+                          • {detail}
+                        </Typography>
+                      ))
+                    ) : (
+                      <Typography variant="body2">
+                        • {section.details}
                       </Typography>
-                    ))}
+                    )}
                   </MatchScoreCard>
                 </Grid>
               ))}
@@ -108,40 +160,7 @@ const JobseekerMatchPage = () => {
           </Box>
 
           {/* Detailed Breakdown */}
-          {[
-            {
-              title: "Technical Skills & Experience",
-              details: [
-                "Primary Skills: React, JavaScript, CSS",
-                "Years of Experience: 4 years",
-                "Recent Projects: E-commerce platforms, SaaS applications",
-              ],
-            },
-            {
-              title: "Work Style & Preferences",
-              details: [
-                "Preferred Work Model: Remote",
-                "Working Hours: Flexible schedule",
-                "Team Size: 5-10 members",
-              ],
-            },
-            {
-              title: "Career Aspirations",
-              details: [
-                "Short-term: Technical Lead",
-                "Long-term: Engineering Manager",
-                "Learning Goals: System Architecture, Team Leadership",
-              ],
-            },
-            {
-              title: "Cultural Values & Interests",
-              details: [
-                "Values: Collaboration, Innovation",
-                "Interests: Open Source, Mentoring",
-                "Communication Style: Direct and transparent",
-              ],
-            },
-          ].map((section) => (
+          {detailedSections.map((section) => (
             <DetailCard key={section.title} elevation={2}>
               <Typography variant="h6" gutterBottom>
                 {section.title}
@@ -159,7 +178,7 @@ const JobseekerMatchPage = () => {
             <Grid container spacing={2}>
               <Grid item>
                 <Button variant="contained" size="large">
-                  Schedule Interview
+                  Apply Now
                 </Button>
               </Grid>
               <Grid item>
@@ -168,7 +187,7 @@ const JobseekerMatchPage = () => {
                   size="large"
                   startIcon={<BookmarkBorderIcon />}
                 >
-                  Save Profile
+                  Save Job
                 </Button>
               </Grid>
             </Grid>
@@ -179,14 +198,14 @@ const JobseekerMatchPage = () => {
         <Grid item xs={12} md={3}>
           <SidebarCard elevation={2}>
             <Typography variant="h6" gutterBottom>
-              Candidate Overview
+              Quick Navigation
             </Typography>
             <List>
               {[
-                "Technical Skills",
-                "Work Experience",
-                "Career Goals",
-                "Cultural Fit",
+                "Skills & Experience",
+                "Work Environment & Conditions",
+                "Mental Well-being & Support",
+                "Workplace Culture & Values",
               ].map((item) => (
                 <ListItem
                   key={item}
@@ -205,7 +224,7 @@ const JobseekerMatchPage = () => {
               startIcon={<EmailIcon />}
               sx={{ mt: 2 }}
             >
-              Contact Candidate
+              Contact HR
             </Button>
           </SidebarCard>
         </Grid>

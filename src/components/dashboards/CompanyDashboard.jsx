@@ -28,6 +28,7 @@ import ProfileEditDialog from "../dialogs/ProfileEditDialog";
 import { safeAccess, safeRender } from "../../lib/utils";
 
 export default function CompanyDashboard() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentCompany, status, error, stats } = useSelector(
     (state) => state.company
@@ -350,7 +351,11 @@ export default function CompanyDashboard() {
                             </>
                           }
                         />
-                        <Button variant="outlined" size="small">
+                        <Button
+                          variant="outlined"
+                          size="small"
+                          onClick={() => navigate(`/company/match`)}
+                        >
                           View Details
                         </Button>
                       </ListItem>
