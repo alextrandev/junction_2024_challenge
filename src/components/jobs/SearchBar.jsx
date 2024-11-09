@@ -1,8 +1,8 @@
 // src/components/SearchBar.js
 import React from "react";
-import { TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { setSearchQuery } from "../../store/jobSlice";
+import { TextField } from "@mui/material";
 
 function SearchBar() {
   const dispatch = useDispatch();
@@ -12,13 +12,25 @@ function SearchBar() {
   };
 
   return (
-    <TextField
-      label="Search Jobs"
-      variant="outlined"
-      fullWidth
-      onChange={handleSearchChange}
-      sx={{ mb: 2 }}
-    />
+    <div
+      className="searchBar"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <TextField
+        label="Search Jobs"
+        variant="outlined"
+        fullWidth
+        onChange={handleSearchChange}
+        style={{
+          maxWidth: "300px",
+          minWidth: "250px",
+        }}
+      />
+    </div>
   );
 }
 

@@ -11,7 +11,9 @@ const Jobs = () => {
         <Typography variant="h3" fontWeight="bold" align="center" gutterBottom>
           Job Search
         </Typography>
-        <SearchBar />
+        <SearchBar
+        align="center"
+        />
         <JobList />
       </Box>
     </Container>
