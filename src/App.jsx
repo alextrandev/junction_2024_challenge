@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Routes,
 } from "react-router-dom";
-import CompanyDataForm from "./components/CompanyDataForm";
+import CompanyDataForm from "./components/company/CompanyDataForm";
 import SignInSelection from "./components/SignInSelection";
 
 // Layout components (you'll need to create these)
@@ -15,6 +15,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchFromApi } from './api/jsonApi';
 import JobSeekerDashboard from "./components/dashboards/JobSeekerDashboard";
+import EmployeeDashboard from "./components/dashboards/EmployeeDashboard";
+import JobSearch from "./components/jobseeker/JobSearch";
+import EmployeeReview from "./components/employee/EmployeeReview";
 
 // Auth pages (you'll need to create these)
 
@@ -65,6 +68,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="jobs"
+              element={
+                <ProtectedRoute userType="jobseeker">
+                  <JobSearch />
+                </ProtectedRoute>
+              }
+            />
           </Route>
 
           {/* Employee Routes */}
@@ -73,7 +84,15 @@ function App() {
               path="dashboard"
               element={
                 <ProtectedRoute userType="employee">
-                  <div>Employee Dashboard (Coming Soon)</div>
+                  <EmployeeDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="review"
+              element={
+                <ProtectedRoute userType="employee">
+                  <EmployeeReview />
                 </ProtectedRoute>
               }
             />
