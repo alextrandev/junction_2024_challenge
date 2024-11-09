@@ -25,6 +25,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCompanies, updateStats } from "../../store/companySlice";
 import CultureEditDialog from "../dialogs/CultureEditDialog";
 import ProfileEditDialog from "../dialogs/ProfileEditDialog";
+import { safeAccess, safeRender } from "../../lib/utils";
 
 export default function CompanyDashboard() {
   const dispatch = useDispatch();
@@ -75,18 +76,6 @@ export default function CompanyDashboard() {
     };
     dispatch(updateStats(calculatedStats));
   }, [activeJobs, recentApplications, dispatch]);
-
-  // Helper function for safe array rendering
-  const safeRender = (array, renderFn) => {
-    return Array.isArray(array) ? array.map(renderFn) : null;
-  };
-
-  // Safe access to nested objects
-  const safeAccess = (obj, path, defaultValue = "") => {
-    return (
-      path.split(".").reduce((acc, part) => acc?.[part], obj) ?? defaultValue
-    );
-  };
 
   // Company Culture Section
   const renderCultureSection = () => (
