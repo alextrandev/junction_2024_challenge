@@ -13,8 +13,10 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import CompanyDashboard from "./components/dashboards/CompanyDashboard";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchFromApi } from './api/jsonApi';
+import { fetchFromApi } from "./api/jsonApi";
 import JobSeekerDashboard from "./components/dashboards/JobSeekerDashboard";
+import WriteReviewTooSoon from "./components/WriteReviewTooSoon";
+import WriteReview from "./components/WriteReview";
 import EmployeeDashboard from "./components/dashboards/EmployeeDashboard";
 import JobSearch from "./components/jobseeker/JobSearch";
 import EmployeeReview from "./components/employee/EmployeeReview";
@@ -94,6 +96,22 @@ function App() {
                 <ProtectedRoute userType="employee">
                   <EmployeeReview />
                 </ProtectedRoute>
+              }
+            />
+            <Route
+              path="congratulations"
+              element={
+                // <ProtectedRoute userType="employee">
+                <WriteReviewTooSoon />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="writereview"
+              element={
+                // <ProtectedRoute userType="employee">
+                <WriteReview />
+                // </ProtectedRoute>
               }
             />
           </Route>
