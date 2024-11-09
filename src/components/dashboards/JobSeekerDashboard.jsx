@@ -27,15 +27,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchJobSeekers } from '../../store/jobSeekerSlice';
 import { useNavigate } from "react-router-dom";
 import { safeAccess, safeRender } from "../../utils/helperFunctions";
+import ProfileEditDialog from "../dialogs/ProfileEditDialog";
+import JobSeekerCultureDialog from "../dialogs/JobSeekerCultureDialog";
 
 export default function JobSeekerDashboard() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentJobSeeker, status, error, stats } = useSelector(
     (state) => state.jobSeeker
   );
+  const [editDialogs, setEditDialogs] = useState({
+    profile: false,
+    culture: false,
+    jobPosition: false,
+  });
+  const [editData, setEditData] = useState({});
 
   // Mock data - replace with real data later
-  const navigate = useNavigate();
   const [recentApplications] = useState([
     { id: 1, name: "John Doe", position: "Software Engineer", status: "New" },
     { id: 2, name: "Jane Smith", position: "UX Designer", status: "Reviewed" },
@@ -328,6 +336,18 @@ export default function JobSeekerDashboard() {
         </Typography>
       </Box>
 
+      {/* dialogs / forms to edit data */}
+      <ProfileEditDialog
+        open={editDialogs.profile}
+        onClose={() => setEditDialogs((prev) => ({ ...prev, profile: false }))}
+      />
+
+      <JobSeekerCultureDialog
+        open={editDialogs.culture}
+        onClose={() => setEditDialogs((prev) => ({ ...prev, culture: false }))}
+      />
+
+      {/* Profile Section with edit button*/}
       <Grid container spacing={3} sx={{ mb: 4 }}>
         <Grid item xs={12}>
           <Card>
