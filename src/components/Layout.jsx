@@ -57,6 +57,7 @@ export default function Layout() {
   };
 
   const handleLogout = () => {
+    setAnchorElUser(null); // Resetting menu state
     localStorage.removeItem("token");
     localStorage.removeItem("userRole");
     navigate("/");
