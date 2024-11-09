@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import { fetchFromApi } from "./api/jsonApi";
 import JobSeekerDashboard from "./components/dashboards/JobSeekerDashboard";
 import WriteReviewTooSoon from "./components/WriteReviewTooSoon";
+import WriteReview from "./components/WriteReview";
 
 // Auth pages (you'll need to create these)
 
@@ -83,6 +84,14 @@ function App() {
               element={
                 // <ProtectedRoute userType="employee">
                 <WriteReviewTooSoon />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="writereview"
+              element={
+                // <ProtectedRoute userType="employee">
+                <WriteReview />
                 // </ProtectedRoute>
               }
             />
