@@ -6,19 +6,32 @@ import {
   DialogTitle,
   TextField,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateJobSeeker } from "../../store/jobSeekerSlice";
 
 export default function JobSeekerProfileEditDialog({ open, onClose }) {
   const dispatch = useDispatch();
   const { currentJobSeeker } = useSelector((state) => state.jobSeeker);
-  const { currentCompany } = useSelector((state) => state.company);
   const [localEditData, setLocalEditData] = useState({
-    name: currentCompany?.name || "",
-    history: currentCompany?.history || "",
-    businessId: currentCompany?.businessId || "",
+    headline: "",
+    experience: "",
+    distance: "",
+    skills: [],
+    // TODO: Add position history
   });
+
+  useEffect(() => {
+    if (currentJobSeeker) {
+      setLocalEditData({
+        headline: currentJobSeeker.headline || "",
+        experience: currentJobSeeker.experience || "",
+        distance: currentJobSeeker.distance || "",
+        skills: currentJobSeeker.skills?.join(", ") || "",
+        // TODO: Add position history
+      });
+    }
+  }, [currentJobSeeker]);
 
   const handleChange = (field, value) => {
     setLocalEditData((prev) => ({
@@ -29,42 +42,52 @@ export default function JobSeekerProfileEditDialog({ open, onClose }) {
 
   const handleSave = async () => {
     try {
-      const updatedData = {
-        ...currentCompany,
-        ...localEditData,
+      const formattedData = {
+        ...currentJobSeeker,
+        headline: localEditData.headline,
+        experience: localEditData.experience,
+        distance: localEditData.distance,
+        skills: localEditData.skills.split(",").map((skill) => skill.trim()),
+        // TODO: Add position history
       };
-      await dispatch(updateCompany(updatedData)).unwrap();
+      await dispatch(updateJobSeeker(formattedData)).unwrap();
       onClose();
     } catch (err) {
-      console.error("Failed to update company profile:", err);
+      console.error("Failed to update job search profile:", err);
     }
   };
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
-      <DialogTitle>Edit Company Profile</DialogTitle>
+      <DialogTitle>Edit Job Search Profile</DialogTitle>
       <DialogContent>
         <TextField
-          label="Company Name"
+          label="Headline"
           fullWidth
-          value={localEditData.name}
-          onChange={(e) => handleChange("name", e.target.value)}
+          value={localEditData.headline}
+          onChange={(e) => handleChange("headline", e.target.value)}
           margin="normal"
         />
         <TextField
-          label="Company History"
+          label="Experience"
           fullWidth
-          multiline
-          rows={4}
-          value={localEditData.history}
-          onChange={(e) => handleChange("history", e.target.value)}
+          value={localEditData.experience}
+          onChange={(e) => handleChange("experience", e.target.value)}
           margin="normal"
         />
         <TextField
-          label="Business ID"
+          label="Distance willing to travel"
           fullWidth
-          value={localEditData.businessId}
-          onChange={(e) => handleChange("businessId", e.target.value)}
+          value={localEditData.distance}
+          onChange={(e) => handleChange("distance", e.target.value)}
+          margin="normal"
+        />
+        <TextField
+          label="Skills (comma-separated)"
+          fullWidth
+          value={localEditData.skills}
+          onChange={(e) => handleChange("skills", e.target.value)}
+          helperText="Enter skills separated by commas"
           margin="normal"
         />
       </DialogContent>
