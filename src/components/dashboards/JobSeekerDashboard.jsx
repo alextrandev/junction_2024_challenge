@@ -51,6 +51,10 @@ export default function JobSeekerDashboard() {
     { id: 3, title: "Product Manager", applicants: 15 },
   ]);
 
+  useEffect(() => {
+    dispatch(fetchJobSeekers());
+  }, [dispatch]);
+
   const getStatusColor = (status) => {
     switch (status) {
       case "New":
@@ -64,35 +68,39 @@ export default function JobSeekerDashboard() {
     }
   };
 
-  useEffect(() => {
-    dispatch(fetchJobSeekers());
-  }, [dispatch]);
+  console.log("Current Job Seeker:", currentJobSeeker);
 
   const renderProfileSection = () => (
     <Grid container spacing={3}>
       <Grid item xs={12} md={4}>
         <Typography variant="subtitle1" fontWeight="bold">
-          Work Styles
+          Bio
         </Typography>
         <List dense>
-          {safeRender(
-            safeAccess(currentJobSeeker, "workStyles", []),
-            (style, index) => (
-              <ListItem key={index}>
-                <ListItemText primary={style} />
-              </ListItem>
-            )
-          )}
+          <ListItem>
+            <ListItemText
+              primary={"Headline"}
+              secondary={currentJobSeeker?.headline ?? null}
+            />
+            <ListItemText
+              primary={"Experience"}
+              secondary={currentJobSeeker?.experience ?? null}
+            />
+            <ListItemText
+              primary={"Distance"}
+              secondary={currentJobSeeker.distance ?? null}
+            />
+          </ListItem>
         </List>
       </Grid>
 
       <Grid item xs={12} md={4}>
         <Typography variant="subtitle1" fontWeight="bold">
-          Values
+          Skills
         </Typography>
         <List dense>
           {safeRender(
-            safeAccess(currentJobSeeker, "values", []),
+            safeAccess(currentJobSeeker, "skills", []),
             (value, index) => (
               <ListItem key={index}>
                 <ListItemText primary={value} />
@@ -104,101 +112,36 @@ export default function JobSeekerDashboard() {
 
       <Grid item xs={12} md={4}>
         <Typography variant="subtitle1" fontWeight="bold">
-          Work culture
+          Experiences
         </Typography>
-        <List dense>
-          <ListItem>
-            <ListItemText primary={currentJobSeeker.workingConditions.culture ?? null} />
-          </ListItem>
-        </List>
-      </Grid>
-
-      <Grid item xs={12} md={4}>
-        <Typography variant="subtitle1" fontWeight="bold">
-          Working flexibility
-        </Typography>
-        <List dense>
-          {safeRender(
-            safeAccess(currentJobSeeker, "workingConditions.flexibility", []),
-            (flex, index) => (
-              <ListItem key={index}>
-                <ListItemText primary={flex} />
+        <Grid item xs={12} md={4}>
+          {safeRender(safeAccess(currentJobSeeker, "positionHistory", []), (position, index) => (
+            <List key={index} dense>
+              <ListItem>
+                <ListItemText
+                  primary={"Position"}
+                  secondary={position.position}
+                />
+                <ListItemText
+                  primary={"Company"}
+                  secondary={position.company}
+                />
+                <ListItemText
+                  primary={"Duration"}
+                  secondary={position.duration}
+                />
+                <ListItemText
+                  primary={"Skills"}
+                  secondary={safeAccess(position, "skills", []).join(", ")}
+                />
               </ListItem>
-            )
-          )}
-        </List>
-      </Grid>
-
-      <Grid item xs={12} md={4}>
-        <Typography variant="subtitle1" fontWeight="bold">
-          Benefit expectations
-        </Typography>
-        <List dense>
-          {safeRender(
-            safeAccess(currentJobSeeker, "workingConditions.benefitExpectations", []),
-            (flex, index) => (
-              <ListItem key={index}>
-                <ListItemText primary={flex} />
-              </ListItem>
-            )
-          )}
-        </List>
-      </Grid>
-
-      <Grid item xs={12} md={4}>
-        <Typography variant="subtitle1" fontWeight="bold" sx={{ mt: 2 }}>
-          Preferred Work Location
-        </Typography>
-        <List dense>
-          <ListItem>
-            <ListItemText primary={currentJobSeeker.workingConditions.location.preferred ?? null} />
-          </ListItem>
-        </List>
-      </Grid>
-
-      <Grid item xs={12} md={4}>
-        <Typography variant="subtitle1" fontWeight="bold" sx={{ mt: 2 }}>
-          Accepted Work Location
-        </Typography>
-        <List dense>
-          <ListItem>
-            <ListItemText
-              primary={"Preferred"}
-              secondary={currentJobSeeker.workingConditions.location.preferred ?? null}
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText
-              primary={"Acceptance"}
-              secondary={safeAccess(currentJobSeeker, "workingConditions.location.acceptance", []).join(", ")}
-            />
-          </ListItem>
-        </List>
-      </Grid>
-
-      <Grid item xs={12} md={4}>
-        <Typography variant="subtitle1" fontWeight="bold" sx={{ mt: 2 }}>
-          Salary expectations
-        </Typography>
-        <List dense>
-          <ListItem>
-            <ListItemText
-              primary={"Min"}
-              secondary={currentJobSeeker.workingConditions.salaryExpectations.min}
-            />
-            <ListItemText
-              primary={"Max"}
-              secondary={currentJobSeeker.workingConditions.salaryExpectations.max}
-            />
-            <ListItemText
-              primary={"Currency"}
-              secondary={currentJobSeeker.workingConditions.salaryExpectations.currency}
-            />
-          </ListItem>
-        </List>
+            </List>
+          ))}
+        </Grid>
       </Grid>
     </Grid>
   );
+
   const renderWorkCultureSection = () => (
     <Grid container spacing={3}>
       <Grid item xs={12} md={4}>
@@ -331,6 +274,42 @@ export default function JobSeekerDashboard() {
     </Grid>
   );
 
+  if (status === "loading" || !currentJobSeeker) {
+    return (
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "50vh",
+          }}
+        >
+          <Typography variant="h6">Loading job seekers data...</Typography>
+        </Box>
+      </Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "50vh",
+          }}
+        >
+          <Typography variant="h6" color="error">
+            Error: {error}
+          </Typography>
+        </Box>
+      </Container>
+    );
+  }
+
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       {/* Welcome Section */}
@@ -342,6 +321,37 @@ export default function JobSeekerDashboard() {
           Here's what's happening with your job applications today.
         </Typography>
       </Box>
+
+      <Grid container spacing={3} sx={{ mb: 4 }}>
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  mb: 2,
+                }}
+              >
+                <Typography variant="h6">Job search profile</Typography>
+                <IconButton
+                  onClick={() => {
+                    setEditDialogs((prev) => {
+                      const newState = { ...prev, culture: true };
+                      console.log("New dialog state:", newState);
+                      return newState;
+                    });
+                  }}
+                >
+                  <EditIcon />
+                </IconButton>
+              </Box>
+              {renderProfileSection()}
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
 
       <Grid container spacing={3} sx={{ mb: 4 }}>
         <Grid item xs={12}>
