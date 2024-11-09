@@ -14,6 +14,7 @@ import CompanyDashboard from "./components/dashboards/CompanyDashboard";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchFromApi } from './api/jsonApi';
+import JobSeekerDashboard from "./components/dashboards/JobSeekerDashboard";
 
 // Auth pages (you'll need to create these)
 
@@ -60,7 +61,7 @@ function App() {
               path="dashboard"
               element={
                 <ProtectedRoute userType="jobseeker">
-                  <div>JobSeeker Dashboard (Coming Soon)</div>
+                  <JobSeekerDashboard />
                 </ProtectedRoute>
               }
             />
