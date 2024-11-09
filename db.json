@@ -1,100 +1,132 @@
 {
-  "Company": [
-    {
-      "id": "1",
-      "name": "CompanyName",
-      "history": "Established in 1990, CompanyName has been a leader in technology solutions...",
-      "businessId": "123456789",
-      "workStyles": [
-        "Collaborative",
-        "Independent",
-        "Agile"
-      ],
-      "values": [
-        "Innovation",
-        "Integrity",
-        "Customer Focus"
-      ],
-      "workingConditions": {
-        "flexibility": [
-          "Flexible Hours",
-          "Fixed Schedule",
-          "Freelance"
-        ],
-        "location": [
-          "Hybrid",
-          "Remote",
-          "Onsite"
-        ],
-        "culture": "Open and inclusive workplace with a focus on teamwork and growth",
-        "mentalHealthSupport": true
-      },
-      "jobPosition": {
-        "title": "Software Development – Technical Lead",
-        "salary": {
-          "min": 6000,
-          "max": 8000,
-          "currency": "EUR"
-        },
-        "benefits": [
-          "Health Insurance",
-          "Remote Work Stipend",
-          "Paid Vacation"
-        ],
-        "selectionCriteria": {
-          "skills": [
-            "JavaScript",
-            "React",
-            "Node.js",
-            "AWS"
-          ],
-          "experience": "5+ years",
-          "rating": 4.5,
-          "location": {
-            "postcode": "00100",
-            "radius": "10 km"
-          }
+    "Company": [
+        {
+            "id": "1",
+            "name": "CompanyName",
+            "history": "Established in 1990, CompanyName has been a leader in technology solutions...",
+            "businessId": "123456789",
+            "workStyles": [
+                "Collaborative",
+                "Independent",
+                "Agile"
+            ],
+            "values": [
+                "Innovation",
+                "Integrity",
+                "Customer Focus"
+            ],
+            "workingConditions": {
+                "flexibility": [
+                    "Flexible Hours",
+                    "Fixed Schedule",
+                    "Freelance"
+                ],
+                "location": [
+                    "Hybrid",
+                    "Remote",
+                    "Onsite"
+                ],
+                "culture": "Open and inclusive workplace with a focus on teamwork and growth",
+                "mentalHealthSupport": true
+            },
+            "jobPosition": {
+                "title": "Software Development – Technical Lead",
+                "salary": {
+                    "min": 6000,
+                    "max": 8000,
+                    "currency": "EUR"
+                },
+                "benefits": [
+                    "Health Insurance",
+                    "Remote Work Stipend",
+                    "Paid Vacation"
+                ],
+                "selectionCriteria": {
+                    "skills": [
+                        "JavaScript",
+                        "React",
+                        "Node.js",
+                        "AWS"
+                    ],
+                    "experience": "5+ years",
+                    "rating": 4.5,
+                    "location": {
+                        "postcode": "00100",
+                        "radius": "10 km"
+                    }
+                }
+            }
         }
-      }
-    }
-  ],
-  "JobSeeker": [
-    {
-      "id": "JS12345",
-      "workStyles": [
-        "Collaborative",
-        "Remote Preferred"
-      ],
-      "values": [
-        "Innovation",
-        "Work-Life Balance"
-      ],
-      "workingConditions": {
-        "flexibility": [
-          "Remote",
-          "Flexible Hours"
-        ],
-        "location": {
-          "preferred": "Remote",
-          "acceptance": [
-            "Hybrid",
-            "Onsite within 20 km"
-          ]
-        },
-        "culture": "Diverse and inclusive environment",
-        "salaryExpectations": {
-          "min": 5500,
-          "max": 7500,
-          "currency": "EUR"
-        },
-        "benefitExpectations": [
-          "Health Insurance",
-          "Gym Membership",
-          "Stock Options"
-        ]
-      },
-      "headline": "Experienced Full Stack Developer",
-      "positionHistory": [
+    ],
+    "JobSeeker": [
+        {
+            "id": "JS12345",
+            "workStyles": [
+                "Collaborative",
+                "Remote Preferred"
+            ],
+            "values": [
+                "Innovation",
+                "Work-Life Balance"
+            ],
+            "workingConditions": {
+                "flexibility": [
+                    "Remote",
+                    "Flexible Hours"
+                ],
+                "location": {
+                    "preferred": "Remote",
+                    "acceptance": [
+                        "Hybrid",
+                        "Onsite within 20 km"
+                    ]
+                },
+                "culture": "Diverse and inclusive environment",
+                "salaryExpectations": {
+                    "min": 5500,
+                    "max": 7500,
+                    "currency": "EUR"
+                },
+                "benefitExpectations": [
+                    "Health Insurance",
+                    "Gym Membership",
+                    "Stock Options"
+                ]
+            },
+            "headline": "Experienced Full Stack Developer",
+            "positionHistory": [
+                {
+                    "position": "Full Stack Developer",
+                    "company": "PreviousCompany",
+                    "duration": "2 years",
+                    "skills": [
+                        "JavaScript",
+                        "React",
+                        "Node.js"
+                    ]
+                }
+            ],
+            "skills": [
+                "JavaScript",
+                "React",
+                "Node.js",
+                "AWS"
+            ],
+            "experience": "5+ years",
+            "distance": "15 km",
+            "hashcode": "uu-xg56fy"
+        }
+    ],
+    "Administration": [
+        {
+            "id": "1",
+            "login": {
+                "username": "admin_user",
+                "password": "securely_hashed_password"
+            }
+        }
+    ],
+    "Employee": [
         {
           "position": "Full Stack Developer",
           "company": "PreviousCompany",
@@ -115,31 +147,6 @@
             "Node.js"
           ]
         }
-      ],
-      "skills": [
-        "JavaScript",
-        "React",
-        "Node.js",
-        "AWS"
-      ],
-      "experience": "5+ years",
-      "distance": "15 km"
-    }
-  ],
-  "Administration": [
-    {
-      "id": "1",
-      "login": {
-        "username": "admin_user",
-        "password": "securely_hashed_password"
-      }
-    }
-  ],
-  "Employee": [
-    {
-      "id": "E56789",
-      "hashcode": "abc123hash",
-      "company": "CompanyName"
-    }
-  ]
+    ],
+    "Hashes": []
 }

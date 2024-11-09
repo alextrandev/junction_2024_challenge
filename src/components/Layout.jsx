@@ -4,9 +4,12 @@ import {
   Logout as LogoutIcon,
   Menu as MenuIcon,
   Person as PersonIcon,
+  QrCode2 as QrCode2Icon,
   Settings as SettingsIcon,
   Work as WorkIcon,
 } from "@mui/icons-material";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 import {
   AppBar,
   Avatar,
@@ -29,10 +32,13 @@ import {
 import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 
+import { useTheme } from "../ThemeContext";
+
 export default function Layout() {
   const navigate = useNavigate();
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { isDarkMode, toggleTheme } = useTheme();
 
   // Replace with actual auth logic
   const userRole = localStorage.getItem("userRole") || "guest";
@@ -70,6 +76,11 @@ export default function Layout() {
             icon: <BusinessIcon />,
             path: "/company/profile",
           },
+          {
+            text: "Create QR Code",
+            icon: <QrCode2Icon />,
+            path: "/company/generatecode",
+          },
         ];
       case "jobseeker":
         return [
@@ -105,7 +116,7 @@ export default function Layout() {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        JobMatch
+        ThriveConnect
       </Typography>
       <Divider />
       <List>
@@ -162,7 +173,7 @@ export default function Layout() {
                 textDecoration: "none",
               }}
             >
-              JobMatch
+              ThriveConnect
             </Typography>
 
             {/* Desktop Navigation */}
@@ -211,6 +222,18 @@ export default function Layout() {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
+                  <MenuItem onClick={toggleTheme}>
+                    <ListItemIcon>
+                      {isDarkMode ? (
+                        <Brightness7Icon fontSize="small" />
+                      ) : (
+                        <Brightness4Icon fontSize="small" />
+                      )}
+                    </ListItemIcon>
+                    <Typography textAlign="center">
+                      {isDarkMode ? "Light" : "Dark"} Mode
+                    </Typography>
+                  </MenuItem>
                   <MenuItem component={Link} to="/settings">
                     <ListItemIcon>
                       <SettingsIcon fontSize="small" />
@@ -278,7 +301,7 @@ export default function Layout() {
       >
         <Container maxWidth="sm">
           <Typography variant="body2" color="text.secondary" align="center">
-            © {new Date().getFullYear()} JobMatch. All rights reserved.
+            © {new Date().getFullYear()} ThriveConnect. All rights reserved.
           </Typography>
         </Container>
       </Box>

@@ -1,273 +1,227 @@
+import React, { useState } from "react";
 import {
-    Work as WorkIcon,
-    School as SchoolIcon,
-    ThumbUp as ThumbUpIcon,
-    Person as PersonIcon,
-  } from "@mui/icons-material";
-  import {
-    Avatar,
-    Box,
-    Button,
-    Card,
-    CardContent,
-    Container,
-    Divider,
-    Grid,
-    List,
-    ListItem,
-    ListItemAvatar,
-    ListItemText,
-    Paper,
-    Typography,
-  } from "@mui/material";
-  import { useState } from "react";
-  
-  export default function EmployeeDashboard() {
-    const [jobRecommendations] = useState([
-      {
-        id: 1,
-        title: "Frontend Developer",
-        company: "Tech Solutions Inc.",
-        location: "Remote",
-        matchPercentage: 85,
-      },
-      {
-        id: 2,
-        title: "Data Analyst",
-        company: "FinCorp",
-        location: "New York, NY",
-        matchPercentage: 90,
-      },
-      {
-        id: 3,
-        title: "UI/UX Designer",
-        company: "Creative Agency",
-        location: "San Francisco, CA",
-        matchPercentage: 78,
-      },
-    ]);
-  
-    const [applications] = useState([
-      {
-        id: 1,
-        position: "Backend Developer",
-        company: "WebWorks",
-        status: "Interview Scheduled",
-      },
-      {
-        id: 2,
-        position: "Data Scientist",
-        company: "DataWiz",
-        status: "In Progress",
-      },
-      {
-        id: 3,
-        position: "Project Manager",
-        company: "InnovaTech",
-        status: "Consider for Future",
-      },
-    ]);
-  
-    const [resources] = useState([
-      {
-        id: 1,
-        title: "Advanced JavaScript Course",
-        platform: "Udemy",
-        link: "#",
-      },
-      {
-        id: 2,
-        title: "Data Analysis with Python",
-        platform: "Coursera",
-        link: "#",
-      },
-      {
-        id: 3,
-        title: "Project Management Basics",
-        platform: "LinkedIn Learning",
-        link: "#",
-      },
-    ]);
-  
-    const userInfo = {
-      name: "Alex Johnson",
-      currentRole: "Junior Developer",
-      skills: ["JavaScript", "React", "Python", "SQL"],
-    };
-  
-    const getStatusColor = (status) => {
-      switch (status) {
-        case "Interview Scheduled":
-          return "#4caf50"; // Green
-        case "In Progress":
-          return "#2196f3"; // Blue
-        case "Consider for Future":
-          return "#f44336"; // Red
-        default:
-          return "#757575"; // Grey
-      }
-    };
-  
-    return (
-      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-        <Box sx={{ mb: 4 }}>
-          <Typography variant="h4" gutterBottom>
-            Welcome, {userInfo.name}
-          </Typography>
-          <Typography variant="subtitle1" color="text.secondary">
-            Your personalized dashboard for job opportunities and application
-            updates.
-          </Typography>
-        </Box>
-  
-        {/* Profile Overview */}
-        <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
-          <Box display="flex" alignItems="center">
-            <Avatar sx={{ bgcolor: "primary.main", mr: 2 }}>
-              <PersonIcon />
-            </Avatar>
-            <Box>
-              <Typography variant="h6">{userInfo.name}</Typography>
-              <Typography color="text.secondary">
-                Current Role: {userInfo.currentRole}
-              </Typography>
-              <Typography color="text.secondary">
-                Skills: {userInfo.skills.join(", ")}
-              </Typography>
-            </Box>
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Container,
+  Divider,
+  Grid,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Paper,
+  Typography,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
+import { Work as WorkIcon, Person as PersonIcon } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+
+export default function EmployeeDashboard() {
+  const [reviews] = useState([
+    {
+      id: 1,
+      companyId: 101,
+      companyName: "Tech Solutions Inc.",
+      reviewType: "Past Review",
+      rating: 4.5,
+      comment: "Great company culture, but work-life balance could improve.",
+      date: "2023-07-15",
+    },
+    {
+      id: 2,
+      companyId: 101,
+      companyName: "Tech Solutions Inc.",
+      reviewType: "Recent Review",
+      rating: 4.2,
+      comment:
+        "Good environment, supportive team, but high pressure on deadlines.",
+      date: "2024-03-20",
+    },
+    {
+      id: 3,
+      companyId: 101,
+      companyName: "Tech Solutions Inc.",
+      reviewType: "Upcoming Review",
+      rating: null,
+      comment: "Looking forward to sharing my experience after one year.",
+      date: "2024-12-01",
+    },
+  ]);
+
+  const userInfo = {
+    name: "Alex Johnson",
+    currentRole: "Junior Developer",
+    skills: ["JavaScript", "React", "Python", "SQL"],
+    currentCompany: "Tech Solutions Inc.", // Employee's current company
+    currentCompanyId: 101, // ID of the current company
+  };
+
+  // Filter reviews by the current company
+  const currentCompanyReviews = reviews.filter(
+    (review) => review.companyId === userInfo.currentCompanyId
+  );
+
+  // Find the upcoming review or check if there's no review for the current company
+  const upcomingReview = currentCompanyReviews.find(
+    (review) => review.reviewType === "Upcoming Review"
+  );
+
+  // State for controlling the modal
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedReview, setSelectedReview] = useState(null);
+
+  // Function to open the modal and set the selected review
+  const handleViewReview = (review) => {
+    setSelectedReview(review);
+    setOpenModal(true);
+  };
+
+  // Function to close the modal
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setSelectedReview(null);
+  };
+
+  // Navigation hook
+  const navigate = useNavigate();
+
+  // Handle the redirect to the review page
+  const handleWriteReview = () => {
+    navigate("/employee/writereview"); // Redirect to the /review page
+  };
+
+  return (
+    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+      <Box sx={{ mb: 4 }}>
+        <Typography variant="h4" gutterBottom>
+          Welcome, {userInfo.name}
+        </Typography>
+        <Typography variant="subtitle1" color="text.secondary">
+          Your personalized dashboard for job and company review
+        </Typography>
+      </Box>
+
+      {/* Profile Overview */}
+      <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
+        <Box display="flex" alignItems="center">
+          <Avatar sx={{ bgcolor: "primary.main", mr: 2 }}>
+            <PersonIcon />
+          </Avatar>
+          <Box>
+            <Typography variant="h6">{userInfo.name}</Typography>
+            <Typography color="text.secondary">
+              Current Role: {userInfo.currentRole}
+            </Typography>
+            <Typography color="text.secondary">
+              Skills: {userInfo.skills.join(", ")}
+            </Typography>
+            <Typography color="text.secondary">
+              Company: {userInfo.currentCompany}
+            </Typography>
           </Box>
-        </Paper>
-  
-        <Grid container spacing={3}>
-          {/* Job Recommendations */}
-          <Grid item xs={12} md={6}>
-            <Card>
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  Job Recommendations
-                </Typography>
-                <List>
-                  {jobRecommendations.map((job) => (
-                    <Box key={job.id}>
-                      <ListItem>
-                        <ListItemAvatar>
-                          <Avatar sx={{ bgcolor: "secondary.main" }}>
-                            <WorkIcon />
-                          </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText
-                          primary={job.title}
-                          secondary={`${job.company} - ${job.location}`}
-                        />
-                        <Box
-                          sx={{
-                            ml: 2,
-                            px: 1.5,
-                            py: 0.5,
-                            borderRadius: 1,
-                            bgcolor: "primary.light",
-                            color: "primary.contrastText",
-                            fontSize: "0.75rem",
-                            fontWeight: "bold",
-                          }}
-                        >
-                          {job.matchPercentage}% Match
-                        </Box>
-                        <Button variant="outlined" size="small" sx={{ ml: 2 }}>
-                          Apply Now
-                        </Button>
-                      </ListItem>
-                      <Divider />
-                    </Box>
-                  ))}
-                </List>
-              </CardContent>
-            </Card>
-          </Grid>
-  
-          {/* Applications Status */}
-          <Grid item xs={12} md={6}>
-            <Card>
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  Applications Status
-                </Typography>
-                <List>
-                  {applications.map((application) => (
-                    <Box key={application.id}>
-                      <ListItem>
-                        <ListItemAvatar>
-                          <Avatar
-                            sx={{ bgcolor: getStatusColor(application.status) }}
-                          >
-                            <ThumbUpIcon />
-                          </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText
-                          primary={application.position}
-                          secondary={`${application.company} - ${application.status}`}
-                        />
-                        <Box
-                          sx={{
-                            px: 1,
-                            py: 0.5,
-                            borderRadius: 1,
-                            bgcolor: `${getStatusColor(application.status)}15`,
-                            color: getStatusColor(application.status),
-                            fontSize: "0.75rem",
-                            fontWeight: "bold",
-                            textAlign: "center",
-                          }}
-                        >
-                          {application.status}
-                        </Box>
-                      </ListItem>
-                      <Divider />
-                    </Box>
-                  ))}
-                </List>
-              </CardContent>
-            </Card>
-          </Grid>
-  
-          {/* Skill Development Resources */}
-          <Grid item xs={12}>
-            <Card>
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  Skill Development Resources
-                </Typography>
-                <List>
-                  {resources.map((resource) => (
-                    <Box key={resource.id}>
-                      <ListItem>
-                        <ListItemAvatar>
-                          <Avatar sx={{ bgcolor: "secondary.main" }}>
-                            <SchoolIcon />
-                          </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText
-                          primary={resource.title}
-                          secondary={`Platform: ${resource.platform}`}
-                        />
-                        <Button
-                          variant="outlined"
-                          size="small"
-                          href={resource.link}
-                          target="_blank"
-                        >
-                          View Course
-                        </Button>
-                      </ListItem>
-                      <Divider />
-                    </Box>
-                  ))}
-                </List>
-              </CardContent>
-            </Card>
-          </Grid>
+        </Box>
+      </Paper>
+
+      <Grid container spacing={3}>
+        {/* Company Reviews */}
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6" gutterBottom>
+                Reviews for {userInfo.currentCompany}
+              </Typography>
+
+              {/* Display button if an upcoming review exists */}
+              {upcomingReview && (
+                <Box sx={{ mb: 3 }}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleWriteReview}
+                  >
+                    Write Review
+                  </Button>
+                </Box>
+              )}
+
+              <List>
+                {currentCompanyReviews.map((review) => (
+                  <Box key={review.id}>
+                    <ListItem>
+                      <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: "secondary.main" }}>
+                          <WorkIcon />
+                        </Avatar>
+                      </ListItemAvatar>
+                      <ListItemText
+                        primary={review.reviewType}
+                        secondary={`${review.companyName} - ${review.date}`}
+                      />
+                      <Box
+                        sx={{
+                          ml: 2,
+                          px: 1.5,
+                          py: 0.5,
+                          borderRadius: 1,
+                          bgcolor: "primary.light",
+                          color: "primary.contrastText",
+                          fontSize: "0.75rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Rating: {review.rating ? review.rating : "N/A"}
+                      </Box>
+                      <Button
+                        variant="outlined"
+                        size="small"
+                        sx={{ ml: 2 }}
+                        onClick={() => handleViewReview(review)} // Open review modal
+                      >
+                        View Review
+                      </Button>
+                    </ListItem>
+                    <Divider />
+                  </Box>
+                ))}
+              </List>
+            </CardContent>
+          </Card>
         </Grid>
-      </Container>
-    );
-  }
-  
+      </Grid>
+
+      {/* Modal for Viewing Review */}
+      <Dialog open={openModal} onClose={handleCloseModal}>
+        <DialogTitle>Review Details</DialogTitle>
+        <DialogContent>
+          {selectedReview && (
+            <>
+              <Typography variant="h6" gutterBottom>
+                {selectedReview.reviewType} - {selectedReview.companyName}
+              </Typography>
+              <Typography variant="body1" color="textSecondary" gutterBottom>
+                Date: {selectedReview.date}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" gutterBottom>
+                Rating: {selectedReview.rating || "N/A"}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" paragraph>
+                Comment: {selectedReview.comment}
+              </Typography>
+            </>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseModal} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </Container>
+  );
+}

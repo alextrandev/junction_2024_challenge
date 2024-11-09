@@ -34,6 +34,7 @@ export default function JobSeekerDashboard() {
   );
 
   // Mock data - replace with real data later
+  const navigate = useNavigate();
   const [recentApplications] = useState([
     { id: 1, name: "John Doe", position: "Software Engineer", status: "New" },
     { id: 2, name: "Jane Smith", position: "UX Designer", status: "Reviewed" },
@@ -479,7 +480,11 @@ export default function JobSeekerDashboard() {
                         primary={job.title}
                         secondary={`${job.applicants} applicants`}
                       />
-                      <Button variant="outlined" size="small">
+                      <Button
+                        variant="outlined"
+                        size="small"
+                        onClick={() => navigate(`/jobseeker/match`)}
+                      >
                         View Details
                       </Button>
                     </ListItem>
@@ -539,7 +544,11 @@ export default function JobSeekerDashboard() {
                           </Box>
                         }
                       />
-                      <Button variant="outlined" size="small">
+                      <Button
+                        variant="outlined"
+                        size="small"
+                        onClick={() => navigate(`/jobseeker/match`)}
+                      >
                         View Details
                       </Button>
                     </ListItem>
