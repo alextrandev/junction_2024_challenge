@@ -36,7 +36,10 @@ const SidebarCard = styled(Card)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
+import { jobSeeker } from "../../data/db.json"; // Adjust the import path as needed
+
 const CompanyMatchPage = () => {
+  const candidate = jobSeeker[0];
   return (
     <Container maxWidth="lg">
       {/* Header */}
@@ -45,12 +48,15 @@ const CompanyMatchPage = () => {
           <Grid item>
             <Avatar
               src="/profile.png"
-              alt="candidate"
+              alt={candidate.headline}
               sx={{ width: 64, height: 64 }}
             />
           </Grid>
           <Grid item xs>
-            <Typography variant="subtitle1">Matching candidate</Typography>
+            <Typography variant="subtitle1">{candidate.headline}</Typography>
+            <Typography variant="body2">
+              {candidate.experience} • {candidate.distance}
+            </Typography>
           </Grid>
           <Grid item>
             <Typography variant="h4" color="primary">
@@ -70,22 +76,22 @@ const CompanyMatchPage = () => {
                 {
                   title: "Technical Skills",
                   score: "90%",
-                  details: ["React Expert", "4 years experience"],
+                  details: candidate.skills,
                 },
                 {
                   title: "Work Preferences",
                   score: "80%",
-                  details: ["Prefers Remote", "Flexible hours"],
+                  details: candidate.workingConditions.flexibility,
                 },
                 {
-                  title: "Career Goals",
+                  title: "Work Style",
                   score: "85%",
-                  details: ["Growth focused", "Leadership track"],
+                  details: candidate.workStyles,
                 },
                 {
-                  title: "Cultural Alignment",
+                  title: "Cultural Values",
                   score: "90%",
-                  details: ["Team player", "Innovation driven"],
+                  details: candidate.values,
                 },
               ].map((section) => (
                 <Grid item xs={12} sm={6} key={section.title}>
@@ -112,33 +118,39 @@ const CompanyMatchPage = () => {
             {
               title: "Technical Skills & Experience",
               details: [
-                "Primary Skills: React, JavaScript, CSS",
-                "Years of Experience: 4 years",
-                "Recent Projects: E-commerce platforms, SaaS applications",
+                `Primary Skills: ${candidate.skills.join(", ")}`,
+                `Years of Experience: ${candidate.experience}`,
+                `Recent Position: ${candidate.positionHistory[0].position} at ${candidate.positionHistory[0].company} (${candidate.positionHistory[0].duration})`,
               ],
             },
             {
               title: "Work Style & Preferences",
               details: [
-                "Preferred Work Model: Remote",
-                "Working Hours: Flexible schedule",
-                "Team Size: 5-10 members",
+                `Location: ${candidate.workingConditions.location.preferred}`,
+                `Flexibility: ${candidate.workingConditions.flexibility.join(
+                  ", "
+                )}`,
+                `Salary Range: ${candidate.workingConditions.salaryExpectations.min}-${candidate.workingConditions.salaryExpectations.max} ${candidate.workingConditions.salaryExpectations.currency}`,
               ],
             },
             {
-              title: "Career Aspirations",
+              title: "Benefits & Culture",
               details: [
-                "Short-term: Technical Lead",
-                "Long-term: Engineering Manager",
-                "Learning Goals: System Architecture, Team Leadership",
+                `Expected Benefits: ${candidate.workingConditions.benefitExpectations.join(
+                  ", "
+                )}`,
+                `Work Culture: ${candidate.workingConditions.culture}`,
+                `Location Options: ${candidate.workingConditions.location.acceptance.join(
+                  ", "
+                )}`,
               ],
             },
             {
-              title: "Cultural Values & Interests",
+              title: "Values & Work Style",
               details: [
-                "Values: Collaboration, Innovation",
-                "Interests: Open Source, Mentoring",
-                "Communication Style: Direct and transparent",
+                `Core Values: ${candidate.values.join(", ")}`,
+                `Work Style: ${candidate.workStyles.join(", ")}`,
+                `Current Distance: ${candidate.distance}`,
               ],
             },
           ].map((section) => (
@@ -153,7 +165,6 @@ const CompanyMatchPage = () => {
               ))}
             </DetailCard>
           ))}
-
           {/* Call-to-Action */}
           <DetailCard elevation={2}>
             <Grid container spacing={2}>
