@@ -29,6 +29,8 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import logo_dark from "../assets/logo_dark.svg";
+import logo_light from "../assets/logo_light.svg";
 import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 
@@ -117,7 +119,14 @@ export default function Layout() {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        ThriveConnect
+        <img
+          src={logo_dark}
+          alt="ThriveConnect Logo"
+          style={{
+            height: "55px",
+            width: "auto",
+          }}
+        />
       </Typography>
       <Divider />
       <List>
@@ -174,7 +183,14 @@ export default function Layout() {
                 textDecoration: "none",
               }}
             >
-              ThriveConnect
+              <img
+                src={logo_dark}
+                alt="ThriveConnect Logo"
+                style={{
+                  height: "55px",
+                  width: "auto",
+                }}
+              />
             </Typography>
 
             {/* Desktop Navigation */}

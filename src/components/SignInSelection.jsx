@@ -55,34 +55,64 @@ export default function SignInSelection() {
     <Container maxWidth="lg">
       <Box
         sx={{
-          minHeight: "100vh",
+          minHeight: "40vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           py: 4,
         }}
       >
-        <Typography
-          variant="h3"
-          component="h1"
-          align="center"
-          gutterBottom
-          sx={{ mb: 6, fontWeight: "bold" }}
-        >
-          Welcome to ThriveConnect
-        </Typography>
-        <img
-          src={logo}
-          alt="ThriveConnect"
-          style={{
-            maxWidth: "180px",
-            width: "100%",
-            height: "auto",
-            margin: "16px auto",
-            display: "block",
-            paddingBottom: "20px",
+        <Box
+          sx={{
+            minHeight: "40vh",
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" }, // Column on small screens, row on larger screens
+            justifyContent: "center",
+            alignItems: "center",
+            py: 4,
           }}
-        />
+        >
+          {/* Left Column - Title and Paragraph */}
+          <Box sx={{ flex: 1, textAlign: "center", mb: { xs: 4, md: 0 } }}>
+            <Typography
+              variant="h3"
+              component="h1"
+              gutterBottom
+              sx={{ mb: 2, fontWeight: "bold" }}
+            >
+              Redefine Work Well-being
+            </Typography>
+            <Typography variant="body1" sx={{ mb: 4 }}>
+              At ThriveConnect, we believe that work well-being is essential to
+              personal and professional growth. Our platform aims to help
+              individuals and organizations foster a healthy work-life balance,
+              encourage professional development, and create meaningful
+              connections for a more fulfilling career journey.
+            </Typography>
+          </Box>
+
+          {/* Right Column - Image */}
+          <Box
+            sx={{
+              flex: 1,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <img
+              src={logo}
+              alt="ThriveConnect"
+              style={{
+                maxWidth: "180px",
+                width: "100%",
+                height: "auto",
+                display: "block",
+              }}
+            />
+          </Box>
+        </Box>
+
         {localStorage.getItem("token") ? (
           <Typography variant="h5" align="center" gutterBottom>
             Signed in as {localStorage.getItem("userRole")}

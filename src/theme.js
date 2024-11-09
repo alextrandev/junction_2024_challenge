@@ -4,14 +4,14 @@ export const lightTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#005BAC", // Blue
-      light: "#E5F2FA", // Light Blue
+      main: "#40A0E6", // Blue
+      light: "#9BC7A5", // Light Blue
       dark: "#004c8f",
       contrastText: "#FFFFFF",
     },
     secondary: {
-      main: "#FF1493", // Deep Pink
-      light: "#FF69B4", // Hot Pink
+      main: "#E68641", // orange
+      light: "#FFF5CC", // light yellow
       dark: "#C71585", // Dark Pink
       contrastText: "#FFFFFF",
     },
