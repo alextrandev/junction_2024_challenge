@@ -4,6 +4,7 @@ import {
   Logout as LogoutIcon,
   Menu as MenuIcon,
   Person as PersonIcon,
+  QrCode2 as QrCode2Icon,
   Settings as SettingsIcon,
   Work as WorkIcon,
 } from "@mui/icons-material";
@@ -69,6 +70,11 @@ export default function Layout() {
             text: "Profile",
             icon: <BusinessIcon />,
             path: "/company/profile",
+          },
+          {
+            text: "Create QR Code",
+            icon: <QrCode2Icon />,
+            path: "/company/generatecode",
           },
         ];
       case "jobseeker":
