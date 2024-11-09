@@ -18,9 +18,9 @@ import EmployeeReview from "./components/employee/EmployeeReview";
 import JobSearch from "./components/jobseeker/JobSearch";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
-import WriteReview from "./components/WriteReview";
-import WriteReviewTooSoon from "./components/WriteReviewTooSoon";
 import { ThemeProvider } from "./ThemeContext";
+import WriteReviewTooSoon from "./components/employee/WriteReviewTooSoon";
+import WriteReview from "./components/employee/WriteReview";
 
 // Auth pages (you'll need to create these)
 
@@ -81,42 +81,34 @@ function App() {
                 }
               />
             </Route>
+          {/* Employee Routes */}
+          <Route path="/employee">
+            <Route
+              path="dashboard"
+              element={
+                <ProtectedRoute userType="employee">
+                  <EmployeeDashboard />
+                </ProtectedRoute>
+              }
+            />
 
-            {/* Employee Routes */}
-            <Route path="/employee">
-              <Route
-                path="dashboard"
-                element={
-                  <ProtectedRoute userType="employee">
-                    <EmployeeDashboard />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="review"
-                element={
-                  <ProtectedRoute userType="employee">
-                    <EmployeeReview />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="congratulations"
-                element={
-                  // <ProtectedRoute userType="employee">
+            <Route
+              path="congratulations"
+              element={
+                <ProtectedRoute userType="employee">
                   <WriteReviewTooSoon />
-                  // </ProtectedRoute>
-                }
-              />
-              <Route
-                path="writereview"
-                element={
-                  // <ProtectedRoute userType="employee">
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="writereview"
+              element={
+                <ProtectedRoute userType="employee">
                   <WriteReview />
-                  // </ProtectedRoute>
-                }
-              />
-            </Route>
+                </ProtectedRoute>
+              }
+            />
+          </Route>
 
             {/* Catch all route */}
             <Route path="*" element={<Navigate to="/signin" replace />} />
