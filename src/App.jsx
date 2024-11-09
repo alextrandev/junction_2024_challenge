@@ -17,6 +17,7 @@ import JobSearch from "./components/jobseeker/JobSearch";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { ThemeProvider } from "./ThemeContext";
+import GenerateHashcode from "./components/company/GenerateHashcode";
 
 // Auth pages (you'll need to create these)
 function App() {
@@ -43,6 +44,14 @@ function App() {
                 element={
                   <ProtectedRoute userType="company">
                     <CompanyDataForm />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="generatecode"
+                element={
+                  <ProtectedRoute userType="company">
+                    <GenerateHashcode />
                   </ProtectedRoute>
                 }
               />
