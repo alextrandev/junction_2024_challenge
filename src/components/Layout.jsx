@@ -7,6 +7,8 @@ import {
   Settings as SettingsIcon,
   Work as WorkIcon,
 } from "@mui/icons-material";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 import {
   AppBar,
   Avatar,
@@ -28,11 +30,13 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useTheme } from "../ThemeContext";
 
 export default function Layout() {
   const navigate = useNavigate();
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { isDarkMode, toggleTheme } = useTheme();
 
   // Replace with actual auth logic
   const userRole = localStorage.getItem("userRole") || "guest";
@@ -211,6 +215,18 @@ export default function Layout() {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
+                  <MenuItem onClick={toggleTheme}>
+                    <ListItemIcon>
+                      {isDarkMode ? (
+                        <Brightness7Icon fontSize="small" />
+                      ) : (
+                        <Brightness4Icon fontSize="small" />
+                      )}
+                    </ListItemIcon>
+                    <Typography textAlign="center">
+                      {isDarkMode ? "Light" : "Dark"} Mode
+                    </Typography>
+                  </MenuItem>
                   <MenuItem component={Link} to="/settings">
                     <ListItemIcon>
                       <SettingsIcon fontSize="small" />
