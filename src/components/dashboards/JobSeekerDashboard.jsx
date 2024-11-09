@@ -27,8 +27,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchJobSeekers } from '../../store/jobSeekerSlice';
 import { useNavigate } from "react-router-dom";
 import { safeAccess, safeRender } from "../../utils/helperFunctions";
-import ProfileEditDialog from "../dialogs/ProfileEditDialog";
 import JobSeekerCultureDialog from "../dialogs/JobSeekerCultureDialog";
+import JobSeekerProfileEditDialog from "../dialogs/JobSeekerProfileDialog";
 
 export default function JobSeekerDashboard() {
   const navigate = useNavigate();
@@ -337,7 +337,7 @@ export default function JobSeekerDashboard() {
       </Box>
 
       {/* dialogs / forms to edit data */}
-      <ProfileEditDialog
+      <JobSeekerProfileEditDialog
         open={editDialogs.profile}
         onClose={() => setEditDialogs((prev) => ({ ...prev, profile: false }))}
       />
@@ -364,8 +364,7 @@ export default function JobSeekerDashboard() {
                 <IconButton
                   onClick={() => {
                     setEditDialogs((prev) => {
-                      const newState = { ...prev, culture: true };
-                      console.log("New dialog state:", newState);
+                      const newState = { ...prev, profile: true };
                       return newState;
                     });
                   }}
