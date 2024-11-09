@@ -53,6 +53,7 @@ function App() {
                 element={
                   <ProtectedRoute userType="company">
                     <CompanyMatchPage />
+
                   </ProtectedRoute>
                 }
               />

@@ -13,6 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/aava_logo_new.png";
 
 export default function SignInSelection() {
   const navigate = useNavigate();
@@ -43,7 +44,10 @@ export default function SignInSelection() {
 
   const handleSignIn = (option) => {
     localStorage.setItem("token", "mock-token");
-    localStorage.setItem("userRole", option.title.toLowerCase().replaceAll(" ", ""));
+    localStorage.setItem(
+      "userRole",
+      option.title.toLowerCase().replaceAll(" ", "")
+    );
     navigate(option.path);
   };
 
@@ -65,11 +69,26 @@ export default function SignInSelection() {
           gutterBottom
           sx={{ mb: 6, fontWeight: "bold" }}
         >
-          Welcome to JobMatch
+          Welcome to ThriveConnect
         </Typography>
-        {localStorage.getItem("token")
-          ? <Typography variant="h5" align="center" gutterBottom>Signed in as {localStorage.getItem("userRole")}</Typography>
-          : <Grid container spacing={4} justifyContent="center">
+        <img
+          src={logo}
+          alt="ThriveConnect"
+          style={{
+            maxWidth: "180px",
+            width: "100%",
+            height: "auto",
+            margin: "16px auto",
+            display: "block",
+            paddingBottom: "20px",
+          }}
+        />
+        {localStorage.getItem("token") ? (
+          <Typography variant="h5" align="center" gutterBottom>
+            Signed in as {localStorage.getItem("userRole")}
+          </Typography>
+        ) : (
+          <Grid container spacing={4} justifyContent="center">
             {options.map((option) => (
               <Grid item xs={12} sm={6} md={4} key={option.title}>
                 <Card
@@ -146,7 +165,7 @@ export default function SignInSelection() {
               </Grid>
             ))}
           </Grid>
-        }
+        )}
       </Box>
     </Container>
   );
