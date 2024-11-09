@@ -21,6 +21,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import { safeAccess, safeRender } from "../../lib/utils";
 
 export default function JobSeekerDashboard() {
   // Mock data - replace with real data later
@@ -60,6 +61,72 @@ export default function JobSeekerDashboard() {
         return "#757575"; // Grey
     }
   };
+
+  const renderProfileSection = () => (
+    <Grid container spacing={3}>
+      <Grid item xs={12} md={4}>
+        <Typography variant="subtitle1" fontWeight="bold">
+          Work Styles
+        </Typography>
+        <List dense>
+          {safeRender(
+            safeAccess(currentCompany, "workStyles", []),
+            (style, index) => (
+              <ListItem key={index}>
+                <ListItemText primary={style} />
+              </ListItem>
+            )
+          )}
+        </List>
+      </Grid>
+
+      <Grid item xs={12} md={4}>
+        <Typography variant="subtitle1" fontWeight="bold">
+          Values
+        </Typography>
+        <List dense>
+          {safeRender(
+            safeAccess(currentCompany, "values", []),
+            (value, index) => (
+              <ListItem key={index}>
+                <ListItemText primary={value} />
+              </ListItem>
+            )
+          )}
+        </List>
+      </Grid>
+
+      <Grid item xs={12} md={4}>
+        <Typography variant="subtitle1" fontWeight="bold">
+          Working Conditions
+        </Typography>
+        <List dense>
+          {safeRender(
+            safeAccess(currentCompany, "workingConditions.flexibility", []),
+            (flex, index) => (
+              <ListItem key={index}>
+                <ListItemText primary={flex} />
+              </ListItem>
+            )
+          )}
+        </List>
+
+        <Typography variant="subtitle1" fontWeight="bold" sx={{ mt: 2 }}>
+          Location Options
+        </Typography>
+        <List dense>
+          {safeRender(
+            safeAccess(currentCompany, "workingConditions.location", []),
+            (loc, index) => (
+              <ListItem key={index}>
+                <ListItemText primary={loc} />
+              </ListItem>
+            )
+          )}
+        </List>
+      </Grid>
+    </Grid>
+  );
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
