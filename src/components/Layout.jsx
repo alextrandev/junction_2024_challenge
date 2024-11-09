@@ -65,7 +65,11 @@ export default function Layout() {
             icon: <DashboardIcon />,
             path: "/company/dashboard",
           },
-          { text: "Profile", icon: <BusinessIcon />, path: "/company/profile" },
+          {
+            text: "Profile",
+            icon: <BusinessIcon />,
+            path: "/company/profile",
+          },
         ];
       case "jobseeker":
         return [
@@ -74,7 +78,11 @@ export default function Layout() {
             icon: <DashboardIcon />,
             path: "/jobseeker/dashboard",
           },
-          { text: "Jobs", icon: <WorkIcon />, path: "/jobseeker/jobs" },
+          {
+            text: "Jobs",
+            icon: <WorkIcon />,
+            path: "/jobseeker/jobs"
+          },
         ];
       case "employee":
         return [
@@ -83,7 +91,11 @@ export default function Layout() {
             icon: <DashboardIcon />,
             path: "/employee/dashboard",
           },
-          { text: "Profile", icon: <PersonIcon />, path: "/employee/profile" },
+          {
+            text: "Review",
+            icon: <PersonIcon />,
+            path: "/employee/review"
+          },
         ];
       default:
         return [];
