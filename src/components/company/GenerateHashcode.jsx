@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, List, ListItem, TextField, Typography } from "@mui/material";
 import { QRCodeSVG } from "qrcode.react";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,35 +35,31 @@ const GenerateHashcode = () => {
         alignItems: "center",
       }}
     >
-      <Typography variant="h5" gutterBottom sx={{ textAlign: "left" }}>
+      <Typography variant="h2" gutterBottom sx={{ textAlign: "left" }}>
         Generate QR-Code
       </Typography>
 
       <Typography
-        variant="body2"
+        variant="body1"
         sx={{ mt: 1, textAlign: "left", wordWrap: "break-word" }}
       >
         When signing a contract with a new employee:
       </Typography>
 
-      <ol style={{ paddingLeft: "16px" }}>
-        <li>
-          <Typography variant="body2">
-            Select the contract start date.
-          </Typography>
-        </li>
-        <li>
-          <Typography variant="body2">Click the Generate button.</Typography>
-        </li>
-        <li>
-          <Typography variant="body2">Copy the generated QR code.</Typography>
-        </li>
-        <li>
-          <Typography variant="body2">
-            Paste the QR code into the contract document.
-          </Typography>
-        </li>
-      </ol>
+      <List style={{ paddingLeft: "16px" }}>
+        <ListItem>
+          <Typography variant="body2">1. Select the contract start date.</Typography>
+        </ListItem>
+        <ListItem>
+          <Typography variant="body2">2. Click the Generate button.</Typography>
+        </ListItem>
+        <ListItem>
+          <Typography variant="body2">3. Copy the generated QR code.</Typography>
+        </ListItem>
+        <ListItem>
+          <Typography variant="body2">4. Paste the QR code into the contract document.</Typography>
+        </ListItem>
+      </List>
 
       <TextField
         label="Contract Start Date"

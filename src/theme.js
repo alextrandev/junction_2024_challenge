@@ -52,10 +52,10 @@ export const darkTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#E5F2FA",
-      light: "#FFFFFF",
+      main: "#40A0E6",
+      light: "#808080",
       dark: "#005BAC",
-      contrastText: "#005BAC",
+      contrastText: "#FFFFFF",
     },
     secondary: {
       main: "#FF69B4", // Lighter pink for dark mode
@@ -70,6 +70,13 @@ export const darkTheme = createTheme({
     text: {
       primary: "#E5F2FA",
       secondary: "#A3A3A3",
+    },
+  },
+  typography: {
+    ...lightTheme.typography,
+    body2: {
+      ...lightTheme.typography.body1,
+      color: "#FFFFFF",
     },
   },
 });

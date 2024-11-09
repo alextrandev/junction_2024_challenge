@@ -75,7 +75,7 @@ export default function SignInSelection() {
           {/* Left Column - Title and Paragraph */}
           <Box sx={{ flex: 1, textAlign: "center", mb: { xs: 4, md: 0 } }}>
             <Typography
-              variant="h3"
+              variant="h1"
               component="h1"
               gutterBottom
               sx={{ mb: 2, fontWeight: "bold" }}
@@ -114,7 +114,7 @@ export default function SignInSelection() {
         </Box>
 
         {localStorage.getItem("token") ? (
-          <Typography variant="h5" align="center" gutterBottom>
+          <Typography variant="h2" align="center" gutterBottom>
             Signed in as {localStorage.getItem("userRole")}
           </Typography>
         ) : (
@@ -127,10 +127,14 @@ export default function SignInSelection() {
                     width: "80%",
                     display: "flex",
                     flexDirection: "column",
-                    transition: "transform 0.2s, box-shadow 0.2s",
+                    borderRadius: 1,
+                    overflow: "hidden",
+                    background: `linear-gradient(135deg, ${option.color}45, ${option.color}15)`,
+                    boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)",
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
                     "&:hover": {
-                      transform: "translateY(-4px)",
-                      boxShadow: 8,
+                      transform: "translateY(-8px)",
+                      boxShadow: "0 12px 36px rgba(0, 0, 0, 0.15)",
                     },
                   }}
                 >
@@ -140,7 +144,7 @@ export default function SignInSelection() {
                       flexDirection: "column",
                       alignItems: "center",
                       textAlign: "center",
-                      p: 4
+                      p: 4,
                     }}
                   >
                     <Box
@@ -148,12 +152,13 @@ export default function SignInSelection() {
                         width: 100,
                         height: 100,
                         borderRadius: "50%",
-                        backgroundColor: `${option.color}15`,
+                        backgroundColor: `${option.color}25`,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         mb: 3,
                         color: option.color,
+                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                       }}
                     >
                       {option.icon}
@@ -163,7 +168,7 @@ export default function SignInSelection() {
                       variant="h5"
                       component="h2"
                       gutterBottom
-                      sx={{ fontWeight: "bold" }}
+                      sx={{ fontWeight: "700", color: option.color, mb: 1 }}
                     >
                       {option.title}
                     </Typography>
@@ -171,7 +176,7 @@ export default function SignInSelection() {
                     <Typography
                       variant="body1"
                       color="text.secondary"
-                      sx={{ mb: 3 }}
+                      sx={{ mb: 3, lineHeight: 1.6 }}
                     >
                       {option.description}
                     </Typography>
@@ -182,17 +187,27 @@ export default function SignInSelection() {
                       onClick={() => handleSignIn(option)}
                       sx={{
                         mt: "auto",
+                        px: 4,
+                        py: 1.5,
+                        borderRadius: 2,
                         backgroundColor: option.color,
+                        color: "#fff",
+                        fontWeight: "600",
                         "&:hover": {
                           backgroundColor: option.color,
-                          filter: "brightness(90%)",
+                          filter: "brightness(85%)",
+                          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+                          background: `${option.color}100)`,
                         },
+                        background: `${option.color}99`,
+                        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
                       }}
                     >
                       Sign In
                     </Button>
                   </CardContent>
                 </Card>
+
               </Grid>
             ))}
           </Grid>
