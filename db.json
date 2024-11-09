@@ -104,6 +104,16 @@
                         "React",
                         "Node.js"
                     ]
+                },
+                {
+                    "position": "Full Stack Developer",
+                    "company": "Next company",
+                    "duration": "1 year",
+                    "skills": [
+                        "JavaScript",
+                        "React",
+                        "Node.js"
+                    ]
                 }
             ],
             "skills": [
