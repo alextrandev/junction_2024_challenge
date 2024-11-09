@@ -1,5 +1,4 @@
 import { Typography, TextField, Button, Container } from "@mui/material";
-import { css } from "@emotion/react";
 
 const CongratulationsPage = () => {
   return (
