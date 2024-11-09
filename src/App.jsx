@@ -11,12 +11,11 @@ import SignInSelection from "./components/SignInSelection";
 import CompanyDashboard from "./components/dashboards/CompanyDashboard";
 import EmployeeDashboard from "./components/dashboards/EmployeeDashboard";
 import JobSeekerDashboard from "./components/dashboards/JobSeekerDashboard";
-import EmployeeReview from "./components/employee/EmployeeReview";
+import WriteReview from "./components/employee/WriteReview";
+import WriteReviewTooSoon from "./components/employee/WriteReviewTooSoon";
 import JobSearch from "./components/jobseeker/JobSearch";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
-import WriteReview from "./components/WriteReview";
-import WriteReviewTooSoon from "./components/WriteReviewTooSoon";
 
 // Auth pages (you'll need to create these)
 function App() {
@@ -77,28 +76,21 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="review"
-              element={
-                <ProtectedRoute userType="employee">
-                  <EmployeeReview />
-                </ProtectedRoute>
-              }
-            />
+
             <Route
               path="congratulations"
               element={
-                // <ProtectedRoute userType="employee">
-                <WriteReviewTooSoon />
-                // </ProtectedRoute>
+                <ProtectedRoute userType="employee">
+                  <WriteReviewTooSoon />
+                </ProtectedRoute>
               }
             />
             <Route
               path="writereview"
               element={
-                // <ProtectedRoute userType="employee">
-                <WriteReview />
-                // </ProtectedRoute>
+                <ProtectedRoute userType="employee">
+                  <WriteReview />
+                </ProtectedRoute>
               }
             />
           </Route>
