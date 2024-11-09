@@ -4,13 +4,19 @@ import {
   BrowserRouter as Router,
   Routes,
 } from "react-router-dom";
-import CompanyDataForm from "./components/CompanyDataForm";
+import CompanyDataForm from "./components/company/CompanyDataForm";
 import SignInSelection from "./components/SignInSelection";
 
 // Layout components (you'll need to create these)
+import CompanyDashboard from "./components/dashboards/CompanyDashboard";
+import EmployeeDashboard from "./components/dashboards/EmployeeDashboard";
+import JobSeekerDashboard from "./components/dashboards/JobSeekerDashboard";
+import EmployeeReview from "./components/employee/EmployeeReview";
+import JobSearch from "./components/jobseeker/JobSearch";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
-import CompanyDashboard from "./components/dashboards/CompanyDashboard";
+import WriteReview from "./components/WriteReview";
+import WriteReviewTooSoon from "./components/WriteReviewTooSoon";
 
 // Auth pages (you'll need to create these)
 function App() {
@@ -47,7 +53,15 @@ function App() {
               path="dashboard"
               element={
                 <ProtectedRoute userType="jobseeker">
-                  <div>JobSeeker Dashboard (Coming Soon)</div>
+                  <JobSeekerDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="jobs"
+              element={
+                <ProtectedRoute userType="jobseeker">
+                  <JobSearch />
                 </ProtectedRoute>
               }
             />
@@ -59,8 +73,32 @@ function App() {
               path="dashboard"
               element={
                 <ProtectedRoute userType="employee">
-                  <div>Employee Dashboard (Coming Soon)</div>
+                  <EmployeeDashboard />
                 </ProtectedRoute>
+              }
+            />
+            <Route
+              path="review"
+              element={
+                <ProtectedRoute userType="employee">
+                  <EmployeeReview />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="congratulations"
+              element={
+                // <ProtectedRoute userType="employee">
+                <WriteReviewTooSoon />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="writereview"
+              element={
+                // <ProtectedRoute userType="employee">
+                <WriteReview />
+                // </ProtectedRoute>
               }
             />
           </Route>
