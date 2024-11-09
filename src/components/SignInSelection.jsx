@@ -43,7 +43,7 @@ export default function SignInSelection() {
 
   const handleSignIn = (option) => {
     localStorage.setItem("token", "mock-token");
-    localStorage.setItem("userRole", option.title.toLowerCase());
+    localStorage.setItem("userRole", option.title.toLowerCase().replaceAll(" ", ""));
     navigate(option.path);
   };
 
@@ -67,84 +67,86 @@ export default function SignInSelection() {
         >
           Welcome to JobMatch
         </Typography>
-
-        <Grid container spacing={4} justifyContent="center">
-          {options.map((option) => (
-            <Grid item xs={12} sm={6} md={4} key={option.title}>
-              <Card
-                sx={{
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  transition: "transform 0.2s, box-shadow 0.2s",
-                  "&:hover": {
-                    transform: "translateY(-4px)",
-                    boxShadow: 8,
-                  },
-                }}
-              >
-                <CardContent
+        {localStorage.getItem("token")
+          ? <Typography variant="h5" align="center" gutterBottom>Signed in as {localStorage.getItem("userRole")}</Typography>
+          : <Grid container spacing={4} justifyContent="center">
+            {options.map((option) => (
+              <Grid item xs={12} sm={6} md={4} key={option.title}>
+                <Card
                   sx={{
+                    height: "100%",
                     display: "flex",
                     flexDirection: "column",
-                    alignItems: "center",
-                    textAlign: "center",
-                    p: 4,
+                    transition: "transform 0.2s, box-shadow 0.2s",
+                    "&:hover": {
+                      transform: "translateY(-4px)",
+                      boxShadow: 8,
+                    },
                   }}
                 >
-                  <Box
+                  <CardContent
                     sx={{
-                      width: 100,
-                      height: 100,
-                      borderRadius: "50%",
-                      backgroundColor: `${option.color}15`,
                       display: "flex",
+                      flexDirection: "column",
                       alignItems: "center",
-                      justifyContent: "center",
-                      mb: 3,
-                      color: option.color,
+                      textAlign: "center",
+                      p: 4,
                     }}
                   >
-                    {option.icon}
-                  </Box>
+                    <Box
+                      sx={{
+                        width: 100,
+                        height: 100,
+                        borderRadius: "50%",
+                        backgroundColor: `${option.color}15`,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        mb: 3,
+                        color: option.color,
+                      }}
+                    >
+                      {option.icon}
+                    </Box>
 
-                  <Typography
-                    variant="h5"
-                    component="h2"
-                    gutterBottom
-                    sx={{ fontWeight: "bold" }}
-                  >
-                    {option.title}
-                  </Typography>
+                    <Typography
+                      variant="h5"
+                      component="h2"
+                      gutterBottom
+                      sx={{ fontWeight: "bold" }}
+                    >
+                      {option.title}
+                    </Typography>
 
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{ mb: 3 }}
-                  >
-                    {option.description}
-                  </Typography>
+                    <Typography
+                      variant="body1"
+                      color="text.secondary"
+                      sx={{ mb: 3 }}
+                    >
+                      {option.description}
+                    </Typography>
 
-                  <Button
-                    variant="contained"
-                    size="large"
-                    onClick={() => handleSignIn(option)}
-                    sx={{
-                      mt: "auto",
-                      backgroundColor: option.color,
-                      "&:hover": {
+                    <Button
+                      variant="contained"
+                      size="large"
+                      onClick={() => handleSignIn(option)}
+                      sx={{
+                        mt: "auto",
                         backgroundColor: option.color,
-                        filter: "brightness(90%)",
-                      },
-                    }}
-                  >
-                    Sign In
-                  </Button>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+                        "&:hover": {
+                          backgroundColor: option.color,
+                          filter: "brightness(90%)",
+                        },
+                      }}
+                    >
+                      Sign In
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        }
       </Box>
     </Container>
   );
