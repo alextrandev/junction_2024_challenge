@@ -17,7 +17,8 @@ import JobSearch from "./components/jobseeker/JobSearch";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { ThemeProvider } from "./ThemeContext";
-import GenerateHashcode from "./components/company/GenerateHashcode";
+import JobseekerMatchPage from "./components/dashboards/JobseekerMatchPage";
+import CompanyMatchPage from "./components/dashboards/CompanyMatchPage";
 
 // Auth pages (you'll need to create these)
 function App() {
@@ -48,10 +49,11 @@ function App() {
                 }
               />
               <Route
-                path="generatecode"
+                path="match"
                 element={
                   <ProtectedRoute userType="company">
-                    <GenerateHashcode />
+                    <CompanyMatchPage />
+
                   </ProtectedRoute>
                 }
               />
@@ -72,6 +74,14 @@ function App() {
                 element={
                   <ProtectedRoute userType="jobseeker">
                     <JobSearch />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="match"
+                element={
+                  <ProtectedRoute userType="jobseeker">
+                    <JobseekerMatchPage />
                   </ProtectedRoute>
                 }
               />
