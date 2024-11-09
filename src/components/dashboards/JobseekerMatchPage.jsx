@@ -17,7 +17,8 @@ import EmailIcon from "@mui/icons-material/Email";
 
 const MatchScoreCard = styled(Card)(({ theme }) => ({
   padding: theme.spacing(2),
-  height: "100%",
+  height: "75%",
+  margin: "0.5rem",
   "& .matchScore": {
     fontSize: "1.5rem",
     fontWeight: "bold",
@@ -117,7 +118,7 @@ const JobseekerMatchPage = () => {
             <Avatar src="/img.png" alt="match" sx={{ width: 64, height: 64 }} />
           </Grid>
           <Grid item xs>
-            <Typography variant="subtitle1">Matching company</Typography>
+            <Typography variant="h2">Anonymous company</Typography>
           </Grid>
           <Grid item>
             <Typography variant="h4" color="primary">
@@ -132,7 +133,7 @@ const JobseekerMatchPage = () => {
         <Grid item xs={12} md={9}>
           {/* Match Score Breakdown */}
           <Box sx={{ mb: 4 }}>
-            <Grid container spacing={2}>
+            <Grid container xs={12}>
               {matchScoreSections.map((section) => (
                 <Grid item xs={12} sm={6} key={section.title}>
                   <MatchScoreCard elevation={2}>
