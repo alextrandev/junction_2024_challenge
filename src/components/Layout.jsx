@@ -30,6 +30,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+
 import { useTheme } from "../ThemeContext";
 
 export default function Layout() {
@@ -109,7 +110,7 @@ export default function Layout() {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        JobMatch
+        ThriveConnect
       </Typography>
       <Divider />
       <List>
@@ -166,7 +167,7 @@ export default function Layout() {
                 textDecoration: "none",
               }}
             >
-              JobMatch
+              ThriveConnect
             </Typography>
 
             {/* Desktop Navigation */}
@@ -294,7 +295,7 @@ export default function Layout() {
       >
         <Container maxWidth="sm">
           <Typography variant="body2" color="text.secondary" align="center">
-            © {new Date().getFullYear()} JobMatch. All rights reserved.
+            © {new Date().getFullYear()} ThriveConnect. All rights reserved.
           </Typography>
         </Container>
       </Box>
