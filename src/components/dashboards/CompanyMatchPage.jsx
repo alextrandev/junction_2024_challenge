@@ -36,10 +36,10 @@ const SidebarCard = styled(Card)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
-import { jobSeeker } from "../../data/db.json"; // Adjust the import path as needed
+import { JobSeeker } from "../../../db.json";
 
 const CompanyMatchPage = () => {
-  const candidate = jobSeeker[0];
+  const candidate = JobSeeker[0];
   return (
     <Container maxWidth="lg">
       {/* Header */}
