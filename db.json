@@ -131,5 +131,15 @@
       "hashcode": "abc123hash",
       "company": "CompanyName"
     }
+  ],
+  "Hashes": [
+    {
+      "id": "d3da",
+      "hashcode": "5s3-tv2if4"
+    },
+    {
+      "id": "e1d8",
+      "hashcode": "1ql-bxhmip"
+    }
   ]
 }

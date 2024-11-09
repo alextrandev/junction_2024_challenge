@@ -1,19 +1,28 @@
-import { useState, useRef } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { QRCodeSVG } from "qrcode.react";
+import { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createHash } from "../../store/hashcodeSlice";
 
 const GenerateHashcode = () => {
+  const dispatch = useDispatch();
+  const { status, error, currentHash } = useSelector((state) => state.hashes);
   const [contractStartDate, setContractStartDate] = useState("");
-  const [hashcode, setHashcode] = useState("");
   const qrCodeRef = useRef();
 
-  const generateHash = () => {
-    const randomHash = `${Math.random().toString(36).substring(2, 15)}`;
-    setHashcode(randomHash); // Remove date from the hash here
+  // Get companyId from localStorage or wherever you store it
+  const companyId = localStorage.getItem("companyId") || 1;
+
+  const generateHashCode = async () => {
+    try {
+      await dispatch(createHash(companyId)).unwrap();
+    } catch (err) {
+      console.error("Failed to generate hash:", err);
+    }
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(hashcode);
+    navigator.clipboard.writeText(currentHash?.hashcode);
     alert("QR-Code copied to clipboard!");
   };
 
@@ -66,11 +75,22 @@ const GenerateHashcode = () => {
           shrink: true,
         }}
       />
-      <Button variant="contained" color="primary" onClick={generateHash}>
-        Generate
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={generateHashCode}
+        disabled={status === "loading"}
+      >
+        {status === "loading" ? "Generating..." : "Generate"}
       </Button>
 
-      {hashcode && (
+      {error && (
+        <Typography color="error" sx={{ mt: 2 }}>
+          Error: {error}
+        </Typography>
+      )}
+
+      {currentHash?.hashcode && (
         <Box
           sx={{
             mt: 3,
@@ -79,7 +99,7 @@ const GenerateHashcode = () => {
             alignItems: "center",
           }}
         >
-          <QRCodeSVG ref={qrCodeRef} value={hashcode} size={256} />
+          <QRCodeSVG ref={qrCodeRef} value={currentHash.hashcode} size={256} />
           <Button variant="contained" onClick={copyToClipboard} sx={{ mt: 2 }}>
             Copy QR Code to Clipboard
           </Button>
