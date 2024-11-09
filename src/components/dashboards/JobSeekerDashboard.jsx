@@ -27,15 +27,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchJobSeekers } from '../../store/jobSeekerSlice';
 import { useNavigate } from "react-router-dom";
 import { safeAccess, safeRender } from "../../utils/helperFunctions";
+import JobSeekerCultureDialog from "../dialogs/JobSeekerCultureDialog";
+import JobSeekerProfileEditDialog from "../dialogs/JobSeekerProfileDialog";
 
 export default function JobSeekerDashboard() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentJobSeeker, status, error, stats } = useSelector(
     (state) => state.jobSeeker
   );
+  const [editDialogs, setEditDialogs] = useState({
+    profile: false,
+    culture: false,
+    jobPosition: false,
+  });
+  const [editData, setEditData] = useState({});
 
   // Mock data - replace with real data later
-  const navigate = useNavigate();
   const [recentApplications] = useState([
     { id: 1, name: "John Doe", position: "Software Engineer", status: "New" },
     { id: 2, name: "Jane Smith", position: "UX Designer", status: "Reviewed" },
@@ -328,6 +336,19 @@ export default function JobSeekerDashboard() {
         </Typography>
       </Box>
 
+      {/* dialogs / forms to edit data */}
+      <JobSeekerProfileEditDialog
+        open={editDialogs.profile}
+        onClose={() => setEditDialogs((prev) => ({ ...prev, profile: false }))}
+      />
+      {/* this one missing the edit / add Experiences */}
+
+      <JobSeekerCultureDialog
+        open={editDialogs.culture}
+        onClose={() => setEditDialogs((prev) => ({ ...prev, culture: false }))}
+      />
+
+      {/* Profile Section with edit button*/}
       <Grid container spacing={3} sx={{ mb: 4 }}>
         <Grid item xs={12}>
           <Card>
@@ -344,8 +365,7 @@ export default function JobSeekerDashboard() {
                 <IconButton
                   onClick={() => {
                     setEditDialogs((prev) => {
-                      const newState = { ...prev, culture: true };
-                      console.log("New dialog state:", newState);
+                      const newState = { ...prev, profile: true };
                       return newState;
                     });
                   }}
