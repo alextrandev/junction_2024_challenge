@@ -3,6 +3,7 @@ import companyReducer from "./companySlice";
 import exampleReducer from "./exampleSlice";
 import hashcodeReducer from "./hashcodeSlice";
 import jobSeekerReducer from "./jobSeekerSlice";
+import jobsReducer from './jobSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     company: companyReducer,
     hashes: hashcodeReducer,
     jobSeeker: jobSeekerReducer,
+    jobs: jobsReducer,
   },
 });
