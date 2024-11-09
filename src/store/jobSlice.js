@@ -4,7 +4,7 @@ import axios from "axios";
 
 // Async thunk to simulate fetching jobs from an API
 export const fetchJobs = createAsyncThunk("jobs/fetchJobs", async () => {
-  const response = await axios.get("http://localhost:3003/Company");
+  const response = await axios.get("http://localhost:3001/Company");
   return response.data; // assuming data.Company is available here
 });
 

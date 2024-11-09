@@ -14,7 +14,7 @@ export default function JobSeekerProfileEditDialog({ open, onClose }) {
   const dispatch = useDispatch();
   const { currentJobSeeker } = useSelector((state) => state.jobSeeker);
   const [localEditData, setLocalEditData] = useState({
-    headline: "",
+    bio: "",
     experience: "",
     distance: "",
     skills: [],
@@ -24,7 +24,7 @@ export default function JobSeekerProfileEditDialog({ open, onClose }) {
   useEffect(() => {
     if (currentJobSeeker) {
       setLocalEditData({
-        headline: currentJobSeeker.headline || "",
+        bio: currentJobSeeker.bio || "",
         experience: currentJobSeeker.experience || "",
         distance: currentJobSeeker.distance || "",
         skills: currentJobSeeker.skills?.join(", ") || "",
@@ -44,7 +44,7 @@ export default function JobSeekerProfileEditDialog({ open, onClose }) {
     try {
       const formattedData = {
         ...currentJobSeeker,
-        headline: localEditData.headline,
+        bio: localEditData.bio,
         experience: localEditData.experience,
         distance: localEditData.distance,
         skills: localEditData.skills.split(",").map((skill) => skill.trim()),
@@ -62,10 +62,11 @@ export default function JobSeekerProfileEditDialog({ open, onClose }) {
       <DialogTitle>Edit Job Search Profile</DialogTitle>
       <DialogContent>
         <TextField
-          label="Headline"
+          label="Bio"
+          multiline
           fullWidth
-          value={localEditData.headline}
-          onChange={(e) => handleChange("headline", e.target.value)}
+          value={localEditData.bio}
+          onChange={(e) => handleChange("bio", e.target.value)}
           margin="normal"
         />
         <TextField

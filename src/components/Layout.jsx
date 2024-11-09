@@ -152,7 +152,7 @@ export default function Layout() {
   );
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "95vh" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>

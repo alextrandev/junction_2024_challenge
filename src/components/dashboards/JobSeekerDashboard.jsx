@@ -42,6 +42,8 @@ export default function JobSeekerDashboard() {
     jobPosition: false,
   });
   const [editData, setEditData] = useState({});
+  const activeJobs = useSelector((state) => state.jobs.jobs);
+  console.log(activeJobs);
 
   // Mock data - replace with real data later
   const [recentApplications] = useState([
@@ -55,11 +57,11 @@ export default function JobSeekerDashboard() {
     },
   ]);
 
-  const [activeJobs] = useState([
-    { id: 1, title: "Senior Developer", applicants: 12 },
-    { id: 2, title: "UX Designer", applicants: 8 },
-    { id: 3, title: "Product Manager", applicants: 15 },
-  ]);
+  // const [activeJobs] = useState([
+  //   { id: 1, title: "Senior Developer", applicants: 12 },
+  //   { id: 2, title: "UX Designer", applicants: 8 },
+  //   { id: 3, title: "Product Manager", applicants: 15 },
+  // ]);
 
   useEffect(() => {
     dispatch(fetchJobSeekers());
@@ -85,16 +87,22 @@ export default function JobSeekerDashboard() {
   };
   const renderProfileSection = () => (
     <Container container spacing={3}>
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} md={12}>
         <Typography variant="subtitle1" fontWeight="bold">
           Bio
         </Typography>
+        <List dense style={{ width: "100%" }}>
+          <ListItem>
+            <ListItemText width="100%"
+              secondary={currentJobSeeker?.bio ?? null}
+            />
+          </ListItem>
+        </List>
+      </Grid>
+
+      <Grid item xs={12} md={4}>
         <List dense style={{ width: "700px" }}>
           <ListItem>
-            <ListItemText
-              primary={"Headline"}
-              secondary={currentJobSeeker?.headline ?? null}
-            />
             <ListItemText
               primary={"Experience"}
               secondary={currentJobSeeker?.experience ?? null}
@@ -507,8 +515,8 @@ export default function JobSeekerDashboard() {
                         </Avatar>
                       </ListItemAvatar>
                       <ListItemText
-                        primary={job.title}
-                        secondary={`${job.applicants} applicants`}
+                        primary={job.jobPosition.title}
+                        secondary={`Rating ${job.jobPosition.selectionCriteria.rating}`}
                       />
                       <Button
                         variant="outlined"
