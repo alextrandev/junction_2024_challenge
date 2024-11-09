@@ -21,7 +21,7 @@ export default function SignInSelection() {
   const options = [
     {
       title: "Company",
-      description: "Sign in as a company to post jobs and manage applications",
+      description: "Sign in as a company to find talents",
       icon: <BusinessIcon sx={{ fontSize: 60 }} />,
       path: "/company/dashboard",
       color: "#1976d2", // MUI primary blue
@@ -35,7 +35,7 @@ export default function SignInSelection() {
     },
     {
       title: "Employee",
-      description: "Sign in as an existing employee",
+      description: "Sign in as an existing employee to post review",
       icon: <BadgeIcon sx={{ fontSize: 60 }} />,
       path: "/employee/dashboard",
       color: "#9c27b0", // MUI purple
