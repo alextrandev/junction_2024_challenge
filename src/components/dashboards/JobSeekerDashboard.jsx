@@ -26,6 +26,7 @@ import { useEffect, useState } from "react";
 import { safeAccess, safeRender } from "../../lib/utils";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchJobSeekers } from '../../store/jobSeekerSlice';
+import { useNavigate } from "react-router-dom";
 
 export default function JobSeekerDashboard() {
   const dispatch = useDispatch();
