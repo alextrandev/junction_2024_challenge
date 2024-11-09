@@ -69,7 +69,12 @@ export default function JobSeekerDashboard() {
         return "#757575"; // Grey
     }
   };
+  // Navigation hook
 
+  // Handle the redirect to the review page
+  const handleApplyJob = () => {
+    navigate("/jobseeker/jobs"); // Redirect to the /review page
+  };
   const renderProfileSection = () => (
     <Container container spacing={3}>
       <Grid item xs={12} md={4}>
@@ -468,7 +473,7 @@ export default function JobSeekerDashboard() {
                 sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}
               >
                 <Typography variant="h6">Active Job Applications</Typography>
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary" onClick={handleApplyJob} >
                   Apply for New Job
                 </Button>
               </Box>
