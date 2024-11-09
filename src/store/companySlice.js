@@ -1,30 +1,28 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 // Async thunks
 export const fetchCompanies = createAsyncThunk(
   "company/fetchCompanies",
   async () => {
-    const response = await fetch("http://localhost:3001/Company");
-    if (!response.ok) throw new Error("Failed to fetch companies");
-    return response.json();
+    const response = await axios.get("http://localhost:3001/Company");
+    return response.data;
   }
 );
 
 export const updateCompany = createAsyncThunk(
   "company/updateCompany",
   async (updatedData) => {
-    const response = await fetch(
+    const response = await axios.put(
       `http://localhost:3001/Company/${updatedData.id}`,
+      updatedData,
       {
-        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(updatedData),
       }
     );
-    if (!response.ok) throw new Error("Failed to update company");
-    return response.json();
+    return response.data;
   }
 );
 
