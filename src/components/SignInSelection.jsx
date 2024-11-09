@@ -75,7 +75,7 @@ export default function SignInSelection() {
           {/* Left Column - Title and Paragraph */}
           <Box sx={{ flex: 1, textAlign: "center", mb: { xs: 4, md: 0 } }}>
             <Typography
-              variant="h3"
+              variant="h1"
               component="h1"
               gutterBottom
               sx={{ mb: 2, fontWeight: "bold" }}
@@ -114,7 +114,7 @@ export default function SignInSelection() {
         </Box>
 
         {localStorage.getItem("token") ? (
-          <Typography variant="h5" align="center" gutterBottom>
+          <Typography variant="h2" align="center" gutterBottom>
             Signed in as {localStorage.getItem("userRole")}
           </Typography>
         ) : (

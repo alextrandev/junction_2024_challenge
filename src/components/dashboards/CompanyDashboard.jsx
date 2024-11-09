@@ -234,7 +234,7 @@ export default function CompanyDashboard() {
         }}
       >
         <Box>
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h2" gutterBottom>
             Welcome back, {currentCompany?.name}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary">

@@ -99,7 +99,7 @@ export default function EmployeeDashboard() {
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h2" gutterBottom>
           Welcome, {userInfo.name}
         </Typography>
         <Typography variant="subtitle1" color="text.secondary">

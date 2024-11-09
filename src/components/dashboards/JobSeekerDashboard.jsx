@@ -341,7 +341,7 @@ export default function JobSeekerDashboard() {
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       {/* Welcome Section */}
       <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h2" gutterBottom>
           Welcome back, Job Seeker
         </Typography>
         <Typography variant="subtitle1" color="text.secondary">
