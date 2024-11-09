@@ -2,18 +2,17 @@
 const ENCRYPTION_KEY = "ThriveConnect2024";
 
 const encodeCompanyId = (companyId) => {
-  // Convert companyId to number and add some randomness
-  const timestamp = Date.now() % 10000; // Last 4 digits of timestamp
+  // Make the encoding more straightforward
   const encoded =
-    (Number(companyId) * 97 + timestamp) ^ parseInt(ENCRYPTION_KEY, 36);
-  return encoded.toString(36); // Convert to base36 for shorter string
+    (Number(companyId) * 1000 + (Date.now() % 1000)) ^
+    parseInt(ENCRYPTION_KEY, 36);
+  return encoded.toString(36);
 };
 
 const decodeCompanyId = (encoded) => {
   try {
-    // Reverse the encoding process
     const decoded = parseInt(encoded, 36) ^ parseInt(ENCRYPTION_KEY, 36);
-    return Math.floor(decoded / 97); // Remove the timestamp influence
+    return Math.floor(decoded / 1000); // Remove the timestamp and get original companyId
   } catch {
     return null;
   }
