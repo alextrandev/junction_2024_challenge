@@ -8,9 +8,6 @@ import CompanyDataForm from "./components/company/CompanyDataForm";
 import SignInSelection from "./components/SignInSelection";
 
 // Layout components (you'll need to create these)
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchFromApi } from "./api/jsonApi";
 import CompanyDashboard from "./components/dashboards/CompanyDashboard";
 import EmployeeDashboard from "./components/dashboards/EmployeeDashboard";
 import JobSeekerDashboard from "./components/dashboards/JobSeekerDashboard";
@@ -22,17 +19,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { ThemeProvider } from "./ThemeContext";
 
 // Auth pages (you'll need to create these)
-
 function App() {
-  const dispatch = useDispatch();
-  const posts = useSelector((state) => state.example.posts);
-
-  useEffect(() => {
-    dispatch(fetchFromApi());
-  }, [dispatch]);
-
-  console.log(posts);
-
   return (
     <ThemeProvider>
       <Router>
