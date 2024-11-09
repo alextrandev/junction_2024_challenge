@@ -81,7 +81,7 @@ export default function Layout() {
           {
             text: "Jobs",
             icon: <WorkIcon />,
-            path: "/jobseeker/jobs"
+            path: "/jobseeker/jobs",
           },
         ];
       case "employee":
@@ -94,7 +94,7 @@ export default function Layout() {
           {
             text: "Review",
             icon: <PersonIcon />,
-            path: "/employee/review"
+            path: "/employee/writereview",
           },
         ];
       default:
