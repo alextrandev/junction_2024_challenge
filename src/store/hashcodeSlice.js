@@ -43,7 +43,7 @@ export const fetchCompanyHashes = createAsyncThunk(
 // Use hash and assign to employee
 export const useHash = createAsyncThunk(
   "hashes/use",
-  async ({ hashcode, jobSeekerId = "JS12345" }, { rejectWithValue }) => {
+  async ({ hashcode, employeeId = "1" }, { rejectWithValue }) => {
     try {
       // First verify the hash exists
       const hashResponse = await axios.get(
@@ -54,26 +54,26 @@ export const useHash = createAsyncThunk(
       }
       const hash = hashResponse.data[0];
 
-      // Get the current JobSeeker data
-      const jobSeekerResponse = await axios.get(
-        `http://localhost:3001/JobSeeker/${jobSeekerId}`
+      // Get the current Employee data
+      const employeeResponse = await axios.get(
+        `http://localhost:3001/Employee/${employeeId}`
       );
-      const jobSeeker = jobSeekerResponse.data;
+      const employee = employeeResponse.data;
 
-      // Update JobSeeker with the hashcode
-      const updatedJobSeeker = await axios.patch(
-        `http://localhost:3001/JobSeeker/${jobSeekerId}`,
+      // Update Employee with the hashcode
+      const updatedEmployee = await axios.patch(
+        `http://localhost:3001/Employee/${employeeId}`,
         {
           hashcode: hashcode,
         }
       );
 
-      // Only delete the hash if the JobSeeker update was successful
-      if (updatedJobSeeker.data) {
+      // Only delete the hash if the Employee update was successful
+      if (updatedEmployee.data) {
         await axios.delete(`http://localhost:3001/Hashes/${hash.id}`);
       }
 
-      return { hash, jobSeeker: updatedJobSeeker.data };
+      return { hash, employee: updatedEmployee.data };
     } catch (error) {
       return rejectWithValue(error.message);
     }
