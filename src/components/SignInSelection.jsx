@@ -52,24 +52,24 @@ export default function SignInSelection() {
   };
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="false">
       <Box
         sx={{
-          minHeight: "40vh",
+          minHeight: "25vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          py: 4,
+          py: 2.4,
         }}
       >
         <Box
           sx={{
-            minHeight: "40vh",
+            minHeight: "25vh",
             display: "flex",
             flexDirection: { xs: "column", md: "row" }, // Column on small screens, row on larger screens
             justifyContent: "center",
             alignItems: "center",
-            py: 4,
+            py: 2.4,
           }}
         >
           {/* Left Column - Title and Paragraph */}
@@ -118,12 +118,13 @@ export default function SignInSelection() {
             Signed in as {localStorage.getItem("userRole")}
           </Typography>
         ) : (
-          <Grid container spacing={4} justifyContent="center">
+          <Grid container spacing={0} justifyContent="center">
             {options.map((option) => (
-              <Grid item xs={12} sm={6} md={4} key={option.title}>
+              <Grid item xs={12} sm={6} md={3} key={option.title}>
                 <Card
                   sx={{
                     height: "100%",
+                    width: "80%",
                     display: "flex",
                     flexDirection: "column",
                     transition: "transform 0.2s, box-shadow 0.2s",
@@ -139,7 +140,7 @@ export default function SignInSelection() {
                       flexDirection: "column",
                       alignItems: "center",
                       textAlign: "center",
-                      p: 4,
+                      p: 4
                     }}
                   >
                     <Box
