@@ -13,13 +13,16 @@ export const fetchCompanies = createAsyncThunk(
 export const updateCompany = createAsyncThunk(
   "company/updateCompany",
   async (updatedData) => {
-    const response = await fetch("http://localhost:3001/Company", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedData),
-    });
+    const response = await fetch(
+      `http://localhost:3001/Company/${updatedData.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedData),
+      }
+    );
     if (!response.ok) throw new Error("Failed to update company");
     return response.json();
   }
