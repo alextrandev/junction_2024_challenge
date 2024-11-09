@@ -26,11 +26,14 @@ export const fetchCompanyHashes = createAsyncThunk(
   "hashes/fetchByCompany",
   async (companyId, { rejectWithValue }) => {
     try {
-      // We'll extract company ID from each hash to filter
       const response = await axios.get("http://localhost:3001/Hashes");
-      return response.data.filter(
+      console.log("All Hashes:", response.data);
+      console.log("Filtering for Company ID:", companyId);
+      const filteredHashes = response.data.filter(
         (hash) => extractCompanyId(hash.hashcode) === companyId
       );
+      console.log("Filtered Hashes:", filteredHashes);
+      return filteredHashes;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -40,29 +43,37 @@ export const fetchCompanyHashes = createAsyncThunk(
 // Use hash and assign to employee
 export const useHash = createAsyncThunk(
   "hashes/use",
-  async ({ hashcode, employeeId }, { rejectWithValue }) => {
+  async ({ hashcode, jobSeekerId = "JS12345" }, { rejectWithValue }) => {
     try {
+      // First verify the hash exists
       const hashResponse = await axios.get(
         `http://localhost:3001/Hashes?hashcode=${hashcode}`
       );
       if (!hashResponse.data.length) {
         throw new Error("Invalid hashcode");
       }
-
       const hash = hashResponse.data[0];
 
-      // Delete hash from Hashes array
-      await axios.delete(`http://localhost:3001/Hashes/${hash.id}`);
+      // Get the current JobSeeker data
+      const jobSeekerResponse = await axios.get(
+        `http://localhost:3001/JobSeeker/${jobSeekerId}`
+      );
+      const jobSeeker = jobSeekerResponse.data;
 
-      // Update employee with hashcode
-      const response = await axios.patch(
-        `http://localhost:3001/Employee/${employeeId}`,
+      // Update JobSeeker with the hashcode
+      const updatedJobSeeker = await axios.patch(
+        `http://localhost:3001/JobSeeker/${jobSeekerId}`,
         {
           hashcode: hashcode,
         }
       );
 
-      return { hash, employee: response.data };
+      // Only delete the hash if the JobSeeker update was successful
+      if (updatedJobSeeker.data) {
+        await axios.delete(`http://localhost:3001/Hashes/${hash.id}`);
+      }
+
+      return { hash, jobSeeker: updatedJobSeeker.data };
     } catch (error) {
       return rejectWithValue(error.message);
     }

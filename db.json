@@ -113,7 +113,8 @@
         "AWS"
       ],
       "experience": "5+ years",
-      "distance": "15 km"
+      "distance": "15 km",
+      "hashcode": "uu-xg56fy"
     }
   ],
   "Administration": [
@@ -128,18 +129,9 @@
   "Employee": [
     {
       "id": "E56789",
-      "hashcode": "abc123hash",
+      "hashcode": "",
       "company": "CompanyName"
     }
   ],
-  "Hashes": [
-    {
-      "id": "d3da",
-      "hashcode": "5s3-tv2if4"
-    },
-    {
-      "id": "e1d8",
-      "hashcode": "1ql-bxhmip"
-    }
-  ]
+  "Hashes": []
 }
