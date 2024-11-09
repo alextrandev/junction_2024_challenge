@@ -68,15 +68,13 @@ export default function JobSeekerDashboard() {
     }
   };
 
-  console.log("Current Job Seeker:", currentJobSeeker);
-
   const renderProfileSection = () => (
-    <Grid container spacing={3}>
+    <Container container spacing={3}>
       <Grid item xs={12} md={4}>
         <Typography variant="subtitle1" fontWeight="bold">
           Bio
         </Typography>
-        <List dense>
+        <List dense style={{ width: "700px" }}>
           <ListItem>
             <ListItemText
               primary={"Headline"}
@@ -98,7 +96,7 @@ export default function JobSeekerDashboard() {
         <Typography variant="subtitle1" fontWeight="bold">
           Skills
         </Typography>
-        <List dense>
+        <List dense style={{ display: "flex" }}>
           {safeRender(
             safeAccess(currentJobSeeker, "skills", []),
             (value, index) => (
@@ -114,22 +112,28 @@ export default function JobSeekerDashboard() {
         <Typography variant="subtitle1" fontWeight="bold">
           Experiences
         </Typography>
-        <Grid item xs={12} md={4}>
+        <Container maxWidth="xl">
           {safeRender(safeAccess(currentJobSeeker, "positionHistory", []), (position, index) => (
-            <List key={index} dense>
+            <List key={index} dense style={{ display: 'flex', flexDirection: 'row', width: "1000px" }}>
               <ListItem>
                 <ListItemText
                   primary={"Position"}
                   secondary={position.position}
                 />
+              </ListItem>
+              <ListItem>
                 <ListItemText
                   primary={"Company"}
                   secondary={position.company}
                 />
+              </ListItem>
+              <ListItem>
                 <ListItemText
                   primary={"Duration"}
                   secondary={position.duration}
                 />
+              </ListItem>
+              <ListItem>
                 <ListItemText
                   primary={"Skills"}
                   secondary={safeAccess(position, "skills", []).join(", ")}
@@ -137,9 +141,9 @@ export default function JobSeekerDashboard() {
               </ListItem>
             </List>
           ))}
-        </Grid>
+        </Container>
       </Grid>
-    </Grid>
+    </Container>
   );
 
   const renderWorkCultureSection = () => (
