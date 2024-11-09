@@ -15,8 +15,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchFromApi } from "./api/jsonApi";
 import JobSeekerDashboard from "./components/dashboards/JobSeekerDashboard";
-import CompanyMatchPage from "./components/dashboards/JobseekerMatchPage";
-import JobseekerMatchPage from "./components/dashboards/JobseekerMatchPage";
 
 // Auth pages (you'll need to create these)
 
@@ -36,8 +34,6 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Navigate to="/signin" />} />
           <Route path="/signin" element={<SignInSelection />} />
-          <Route path="/company-match" element={<CompanyMatchPage />} />
-          <Route path="/jobseeker-match" element={<JobseekerMatchPage />} />
 
           {/* Company Routes */}
           <Route path="/company">
