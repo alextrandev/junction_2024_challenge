@@ -1,0 +1,14 @@
+{
+    "name": "ThriveConnect",
+    "short_name": "ThriveConnect",
+    "icons": [
+        {
+            "src": "/favicon/favicon.png.webp",
+            "sizes": "32x32",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#005BAC",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}
