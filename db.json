@@ -1,152 +1,153 @@
 {
-  "Company": [
-    {
-      "id": "1",
-      "name": "CompanyName",
-      "history": "Established in 1990, CompanyName has been a leader in technology solutions...",
-      "businessId": "123456789",
-      "workStyles": [
-        "Collaborative",
-        "Independent",
-        "Agile"
-      ],
-      "values": [
-        "Innovation",
-        "Integrity",
-        "Customer Focus"
-      ],
-      "workingConditions": {
-        "flexibility": [
-          "Flexible Hours",
-          "Fixed Schedule",
-          "Freelance"
-        ],
-        "location": [
-          "Hybrid",
-          "Remote",
-          "Onsite"
-        ],
-        "culture": "Open and inclusive workplace with a focus on teamwork and growth",
-        "mentalHealthSupport": true
-      },
-      "jobPosition": {
-        "title": "Software Development – Technical Lead",
-        "salary": {
-          "min": 6000,
-          "max": 8000,
-          "currency": "EUR"
-        },
-        "benefits": [
-          "Health Insurance",
-          "Remote Work Stipend",
-          "Paid Vacation"
-        ],
-        "selectionCriteria": {
-          "skills": [
-            "JavaScript",
-            "React",
-            "Node.js",
-            "AWS"
-          ],
-          "experience": "5+ years",
-          "rating": 4.5,
-          "location": {
-            "postcode": "00100",
-            "radius": "10 km"
-          }
-        }
-      }
-    }
-  ],
-  "JobSeeker": [
-    {
-      "id": "JS12345",
-      "workStyles": [
-        "Collaborative",
-        "Remote Preferred"
-      ],
-      "values": [
-        "Innovation",
-        "Work-Life Balance"
-      ],
-      "workingConditions": {
-        "flexibility": [
-          "Remote",
-          "Flexible Hours"
-        ],
-        "location": {
-          "preferred": "Remote",
-          "acceptance": [
-            "Hybrid",
-            "Onsite within 20 km"
-          ]
-        },
-        "culture": "Diverse and inclusive environment",
-        "salaryExpectations": {
-          "min": 5500,
-          "max": 7500,
-          "currency": "EUR"
-        },
-        "benefitExpectations": [
-          "Health Insurance",
-          "Gym Membership",
-          "Stock Options"
-        ]
-      },
-      "headline": "Experienced Full Stack Developer",
-      "positionHistory": [
+    "Company": [
         {
-          "position": "Full Stack Developer",
-          "company": "PreviousCompany",
-          "duration": "2 years",
-          "skills": [
-            "JavaScript",
-            "React",
-            "Node.js"
-          ]
-        },
-        {
-          "position": "Full Stack Developer",
-          "company": "Next company",
-          "duration": "1 year",
-          "skills": [
-            "JavaScript",
-            "React",
-            "Node.js"
-          ]
+            "id": "1",
+            "name": "Acme Technologies",
+            "history": "Established in 2005, Acme Technologies is a leading provider of innovative software solutions...",
+            "businessId": "987654321",
+            "workStyles": [
+                "Collaborative",
+                "Independent",
+                "Agile"
+            ],
+            "values": [
+                "Innovation",
+                "Integrity",
+                "Customer Focus"
+            ],
+            "workingConditions": {
+                "flexibility": [
+                    "Flexible Hours",
+                    "Remote Work",
+                    "Freelance"
+                ],
+                "location": [
+                    "Hybrid",
+                    "Remote",
+                    "Onsite"
+                ],
+                "culture": "Open and inclusive workplace with a focus on teamwork and personal growth",
+                "mentalHealthSupport": true
+            },
+            "jobPosition": {
+                "title": "Senior Software Engineer",
+                "salary": {
+                    "min": 7000,
+                    "max": 9000,
+                    "currency": "EUR"
+                },
+                "benefits": [
+                    "Health Insurance",
+                    "Flexible Vacation Policy",
+                    "Stock Options"
+                ],
+                "selectionCriteria": {
+                    "skills": [
+                        "Java",
+                        "Spring Boot",
+                        "Microservices",
+                        "AWS"
+                    ],
+                    "experience": "7+ years",
+                    "rating": 4.8,
+                    "location": {
+                        "postcode": "00100",
+                        "radius": "20 km"
+                    }
+                }
+            }
         }
-      ],
-      "skills": [
-        "JavaScript",
-        "React",
-        "Node.js",
-        "AWS"
-      ],
-      "experience": "5+ years",
-      "distance": "15 km",
-      "hashcode": "uu-xg56fy"
-    }
-  ],
-  "Administration": [
-    {
-      "id": "1",
-      "login": {
-        "username": "admin_user",
-        "password": "securely_hashed_password"
-      }
-    }
-  ],
-  "Employee": [
-    {
-      "id": "1",
-      "hashcode": "",
-      "company": "CompanyName"
-    }
-  ],
-  "Hashes": [
-    {
-      "id": "f8b7",
-      "hashcode": "yb-kg5d78"
-    }
-  ]
+    ],
+    "JobSeeker": [
+        {
+            "id": "JS98765",
+            "workStyles": [
+                "Collaborative",
+                "Remote Preferred"
+            ],
+            "values": [
+                "Innovation",
+                "Work-Life Balance"
+            ],
+            "workingConditions": {
+                "flexibility": [
+                    "Remote",
+                    "Flexible Hours"
+                ],
+                "location": {
+                    "preferred": "Remote",
+                    "acceptance": [
+                        "Hybrid",
+                        "Onsite within 30 km"
+                    ]
+                },
+                "culture": "Diverse and inclusive environment with a focus on work-life balance",
+                "salaryExpectations": {
+                    "min": 6500,
+                    "max": 8500,
+                    "currency": "EUR"
+                },
+                "benefitExpectations": [
+                    "Health Insurance",
+                    "Gym Membership",
+                    "Paid Parental Leave"
+                ]
+            },
+            "headline": "Experienced Full Stack Developer",
+            "bio": "Experienced Full Stack Developer with 5+ years of experience in Java, Spring Boot, and Angular, seeking new opportunities in software development and eager to contribute to innovative projects. Passionate about creating scalable and efficient solutions, collaborating with cross-functional teams, and staying updated with the latest technologies. Open to remote and onsite positions. Let's connect and build something amazing together!",
+            "positionHistory": [
+                {
+                    "position": "Full Stack Developer",
+                    "company": "PreviousCompany",
+                    "duration": "3 years",
+                    "skills": [
+                        "Java",
+                        "Spring Boot",
+                        "Angular"
+                    ]
+                },
+                {
+                    "position": "Senior Software Engineer",
+                    "company": "NextCompany",
+                    "duration": "2 years",
+                    "skills": [
+                        "Java",
+                        "Spring Boot",
+                        "Microservices"
+                    ]
+                }
+            ],
+            "skills": [
+                "Java",
+                "Spring Boot",
+                "Microservices",
+                "AWS"
+            ],
+            "experience": "7+ years",
+            "distance": "25 km",
+            "hashcode": "ab-cd1234"
+        }
+    ],
+    "Administration": [
+        {
+            "id": "1",
+            "login": {
+                "username": "admin_user",
+                "password": "securely_hashed_password"
+            }
+        }
+    ],
+    "Employee": [
+        {
+            "id": "1",
+            "hashcode": "",
+            "company": "Acme Technologies"
+        }
+    ],
+    "Hashes": [
+        {
+            "id": "f8b7",
+            "hashcode": "yb-kg5d78"
+        }
+    ]
 }
