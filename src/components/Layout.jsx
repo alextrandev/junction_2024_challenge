@@ -35,12 +35,16 @@ import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 
 import { useTheme } from "../ThemeContext";
+import Toast from "./utils/Toast";
+import { handleOpenToast } from "../store/toastSlice";
+import { useDispatch } from "react-redux";
 
 export default function Layout() {
   const navigate = useNavigate();
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
+  const dispatch = useDispatch();
 
   // Replace with actual auth logic
   const userRole = localStorage.getItem("userRole") || "guest";
@@ -62,6 +66,7 @@ export default function Layout() {
     setAnchorElUser(null); // Resetting menu state
     localStorage.removeItem("token");
     localStorage.removeItem("userRole");
+    dispatch(handleOpenToast({ message: "Logged out successfully", severity: "success" }));
     navigate("/");
   };
 
@@ -193,8 +198,11 @@ export default function Layout() {
               />
             </Typography>
 
-            {/* Desktop Navigation */}
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            {/* Empty space to push navigation to the right */}
+            <Box sx={{ flexGrow: 1 }} />
+
+            {/* Main Navigation */}
+            <Box sx={{ display: { xs: "none", md: "flex" }, mr: 2 }}>
               {isAuthenticated &&
                 getNavItems().map((item) => (
                   <Button
@@ -215,7 +223,7 @@ export default function Layout() {
                 ))}
             </Box>
 
-            {/* User Menu */}
+            {/* User Profile */}
             {isAuthenticated ? (
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
@@ -335,7 +343,7 @@ export default function Layout() {
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true, // Better mobile performance
+          keepMounted: true,
         }}
         sx={{
           display: { xs: "block", sm: "none" },
@@ -376,6 +384,7 @@ export default function Layout() {
           </Typography>
         </Container>
       </Box>
+      <Toast />
     </Box>
   );
 }

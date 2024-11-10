@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { useDebounce } from "../../hooks/useDebounce";
 import { fetchCompanyHashes, useHash } from "../../store/hashcodeSlice";
 import { extractCompanyId } from "../../utils/helperFunctions";
+import { handleOpenToast } from "../../store/toastSlice";
 
 const WriteReview = () => {
   const dispatch = useDispatch();
@@ -53,12 +54,12 @@ const WriteReview = () => {
       ).unwrap();
 
       if (result) {
-        console.log("Review submitted successfully");
+        dispatch(handleOpenToast({ message: "Review submitted", severity: "success" }));
         navigate("/employee/dashboard"); // Clear the form
       }
     } catch (error) {
-      console.error("Failed to submit review:", error);
       setHashcodeError("Failed to submit review. Please try again.");
+      dispatch(handleOpenToast({ message: { hashcodeError }, severity: "error" }));
     } finally {
       setIsSubmitting(false);
     }

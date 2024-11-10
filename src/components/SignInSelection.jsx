@@ -14,9 +14,12 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/aava_logo_new.png";
+import { useDispatch } from "react-redux";
+import { handleOpenToast } from "../store/toastSlice";
 
 export default function SignInSelection() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const options = [
     {
@@ -48,6 +51,7 @@ export default function SignInSelection() {
       "userRole",
       option.title.toLowerCase().replaceAll(" ", "")
     );
+    dispatch(handleOpenToast({ message: `Successfully logged in as ${option.title}`, severity: "success" }));
     navigate(option.path);
   };
 
@@ -59,28 +63,29 @@ export default function SignInSelection() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          py: 2.4,
+          alignItems: "center",
         }}
       >
         <Box
           sx={{
             minHeight: "25vh",
             display: "flex",
-            flexDirection: { xs: "column", md: "row" }, // Column on small screens, row on larger screens
+            maxWidth: "75%",
+            flexDirection: { xs: "column", md: "row" },
             justifyContent: "center",
             alignItems: "center",
             py: 2.4,
           }}
         >
           {/* Left Column - Title and Paragraph */}
-          <Box sx={{ flex: 1, textAlign: "center", mb: { xs: 4, md: 0 } }}>
+          <Box sx={{ flex: 2, textAlign: "left", mb: { xs: 4, md: 0 } }}>
             <Typography
               variant="h1"
               component="h1"
               gutterBottom
               sx={{ mb: 2, fontWeight: "bold" }}
             >
-              Redefine Work Well-being
+              Redefine <br /> Work Well-being
             </Typography>
             <Typography variant="body1" sx={{ mb: 4 }}>
               At ThriveConnect, we believe that work well-being is essential to
@@ -124,7 +129,7 @@ export default function SignInSelection() {
                 <Card
                   sx={{
                     height: "100%",
-                    width: "80%",
+                    width: "90%",
                     display: "flex",
                     flexDirection: "column",
                     borderRadius: 1,
@@ -207,7 +212,6 @@ export default function SignInSelection() {
                     </Button>
                   </CardContent>
                 </Card>
-
               </Grid>
             ))}
           </Grid>

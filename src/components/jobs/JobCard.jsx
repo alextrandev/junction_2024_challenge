@@ -103,7 +103,7 @@ const JobCard = ({ job }) => {
           flexDirection: "column",
           gap: 2,
           padding: 2,
-          maxWidth: "600px",
+          width: "100%",
         }}
       >
         <CardContent>
@@ -193,6 +193,10 @@ const JobCard = ({ job }) => {
             >
               Apply Now
             </Button>
+
+          >
+            <Button variant="outlined" onClick={handleCloseModal}>Close</Button>
+            <Button variant="contained" >Apply Now</Button>
           </Stack>
         </DialogContent>
       </Dialog>
