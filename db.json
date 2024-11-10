@@ -1,153 +1,435 @@
 {
-    "Company": [
-        {
-            "id": "1",
-            "name": "Acme Technologies",
-            "history": "Established in 2005, Acme Technologies is a leading provider of innovative software solutions...",
-            "businessId": "987654321",
-            "workStyles": [
-                "Collaborative",
-                "Independent",
-                "Agile"
-            ],
-            "values": [
-                "Innovation",
-                "Integrity",
-                "Customer Focus"
-            ],
-            "workingConditions": {
-                "flexibility": [
-                    "Flexible Hours",
-                    "Remote Work",
-                    "Freelance"
-                ],
-                "location": [
-                    "Hybrid",
-                    "Remote",
-                    "Onsite"
-                ],
-                "culture": "Open and inclusive workplace with a focus on teamwork and personal growth",
-                "mentalHealthSupport": true
-            },
-            "jobPosition": {
-                "title": "Senior Software Engineer",
-                "salary": {
-                    "min": 7000,
-                    "max": 9000,
-                    "currency": "EUR"
-                },
-                "benefits": [
-                    "Health Insurance",
-                    "Flexible Vacation Policy",
-                    "Stock Options"
-                ],
-                "selectionCriteria": {
-                    "skills": [
-                        "Java",
-                        "Spring Boot",
-                        "Microservices",
-                        "AWS"
-                    ],
-                    "experience": "7+ years",
-                    "rating": 4.8,
-                    "location": {
-                        "postcode": "00100",
-                        "radius": "20 km"
-                    }
-                }
-            }
+  "Company": [
+    {
+      "id": "1",
+      "name": "Acme Technologies",
+      "history": "Established in 2005, Acme Technologies is a leading provider of innovative software solutions...",
+      "businessId": "987654321",
+      "workStyles": [
+        "Collaborative",
+        "Independent",
+        "Agile"
+      ],
+      "values": [
+        "Innovation",
+        "Integrity",
+        "Customer Focus"
+      ],
+      "workingConditions": {
+        "flexibility": [
+          "Flexible Hours",
+          "Remote Work",
+          "Freelance"
+        ],
+        "location": [
+          "Hybrid",
+          "Remote",
+          "Onsite"
+        ],
+        "culture": "Open and inclusive workplace with a focus on teamwork and personal growth",
+        "mentalHealthSupport": true
+      },
+      "jobPosition": {
+        "title": "Senior Software Engineer",
+        "salary": {
+          "min": 7000,
+          "max": 9000,
+          "currency": "EUR"
+        },
+        "benefits": [
+          "Health Insurance",
+          "Flexible Vacation Policy",
+          "Stock Options"
+        ],
+        "selectionCriteria": {
+          "skills": [
+            "Java",
+            "Spring Boot",
+            "Microservices",
+            "AWS"
+          ],
+          "experience": "7+ years",
+          "rating": 4.8,
+          "location": {
+            "postcode": "00100",
+            "radius": "20 km"
+          }
         }
-    ],
-    "JobSeeker": [
-        {
-            "id": "JS98765",
-            "workStyles": [
-                "Collaborative",
-                "Remote Preferred"
-            ],
-            "values": [
-                "Innovation",
-                "Work-Life Balance"
-            ],
-            "workingConditions": {
-                "flexibility": [
-                    "Remote",
-                    "Flexible Hours"
-                ],
-                "location": {
-                    "preferred": "Remote",
-                    "acceptance": [
-                        "Hybrid",
-                        "Onsite within 30 km"
-                    ]
-                },
-                "culture": "Diverse and inclusive environment with a focus on work-life balance",
-                "salaryExpectations": {
-                    "min": 6500,
-                    "max": 8500,
-                    "currency": "EUR"
-                },
-                "benefitExpectations": [
-                    "Health Insurance",
-                    "Gym Membership",
-                    "Paid Parental Leave"
-                ]
-            },
-            "headline": "Experienced Full Stack Developer",
-            "bio": "Experienced Full Stack Developer with 5+ years of experience in Java, Spring Boot, and Angular, seeking new opportunities in software development and eager to contribute to innovative projects. Passionate about creating scalable and efficient solutions, collaborating with cross-functional teams, and staying updated with the latest technologies. Open to remote and onsite positions. Let's connect and build something amazing together!",
-            "positionHistory": [
-                {
-                    "position": "Full Stack Developer",
-                    "company": "PreviousCompany",
-                    "duration": "3 years",
-                    "skills": [
-                        "Java",
-                        "Spring Boot",
-                        "Angular"
-                    ]
-                },
-                {
-                    "position": "Senior Software Engineer",
-                    "company": "NextCompany",
-                    "duration": "2 years",
-                    "skills": [
-                        "Java",
-                        "Spring Boot",
-                        "Microservices"
-                    ]
-                }
-            ],
-            "skills": [
-                "Java",
-                "Spring Boot",
-                "Microservices",
-                "AWS"
-            ],
-            "experience": "7+ years",
-            "distance": "25 km",
-            "hashcode": "ab-cd1234"
+      }
+    },
+    {
+      "id": "2",
+      "name": "TechInnovators",
+      "history": "TechInnovators has been revolutionizing the tech world since 2005 with cutting-edge software solutions.",
+      "businessId": "987654321",
+      "workStyles": [
+        "Innovative",
+        "Remote First"
+      ],
+      "values": [
+        "Sustainability",
+        "Growth",
+        "Collaboration"
+      ],
+      "workingConditions": {
+        "flexibility": [
+          "Flexible Hours",
+          "Work from Home"
+        ],
+        "location": [
+          "Remote",
+          "Onsite"
+        ],
+        "culture": "Dynamic and fast-paced environment focused on innovation and sustainability.",
+        "mentalHealthSupport": true
+      },
+      "jobPosition": {
+        "title": "Data Scientist",
+        "salary": {
+          "min": 4500,
+          "max": 6000,
+          "currency": "EUR"
+        },
+        "benefits": [
+          "Stock Options",
+          "Remote Work Stipend",
+          "Flexible Work Hours"
+        ],
+        "selectionCriteria": {
+          "skills": [
+            "Python",
+            "Machine Learning",
+            "SQL",
+            "Data Visualization"
+          ],
+          "experience": "3+ years",
+          "rating": 4.2,
+          "location": {
+            "postcode": "1200",
+            "radius": "20 km"
+          }
         }
-    ],
-    "Administration": [
-        {
-            "id": "1",
-            "login": {
-                "username": "admin_user",
-                "password": "securely_hashed_password"
-            }
+      }
+    },
+    {
+      "id": "3",
+      "name": "HealthTech Corp",
+      "history": "HealthTech Corp is a leader in the digital health sector, providing innovative solutions for healthcare professionals.",
+      "businessId": "456789123",
+      "workStyles": [
+        "Remote",
+        "Collaborative"
+      ],
+      "values": [
+        "Wellness",
+        "Compassion",
+        "Health"
+      ],
+      "workingConditions": {
+        "flexibility": [
+          "Flexible Hours",
+          "Work from Home"
+        ],
+        "location": [
+          "Remote",
+          "Hybrid"
+        ],
+        "culture": "Committed to improving healthcare through technology with a focus on work-life balance.",
+        "mentalHealthSupport": true
+      },
+      "jobPosition": {
+        "title": "Healthcare Product Manager",
+        "salary": {
+          "min": 5000,
+          "max": 7000,
+          "currency": "EUR"
+        },
+        "benefits": [
+          "Health Insurance",
+          "Work-Life Balance Stipend",
+          "Paid Time Off"
+        ],
+        "selectionCriteria": {
+          "skills": [
+            "Product Management",
+            "Agile",
+            "Healthcare Technology",
+            "Communication"
+          ],
+          "experience": "5+ years",
+          "rating": 4.7,
+          "location": {
+            "postcode": "1001",
+            "radius": "50 km"
+          }
         }
-    ],
-    "Employee": [
-        {
-            "id": "1",
-            "hashcode": "",
-            "company": "Acme Technologies"
+      }
+    },
+    {
+      "id": "4",
+      "name": "GreenTech Solutions",
+      "history": "GreenTech Solutions is at the forefront of creating environmentally sustainable technologies.",
+      "businessId": "234567890",
+      "workStyles": [
+        "Flexible",
+        "Innovative"
+      ],
+      "values": [
+        "Sustainability",
+        "Innovation",
+        "Teamwork"
+      ],
+      "workingConditions": {
+        "flexibility": [
+          "Remote",
+          "Flexible Hours"
+        ],
+        "location": [
+          "Hybrid",
+          "Onsite"
+        ],
+        "culture": "GreenTech Solutions fosters creativity, growth, and environmental responsibility.",
+        "mentalHealthSupport": true
+      },
+      "jobPosition": {
+        "title": "Environmental Engineer",
+        "salary": {
+          "min": 4000,
+          "max": 6000,
+          "currency": "EUR"
+        },
+        "benefits": [
+          "Health Insurance",
+          "Paid Vacation",
+          "Green Commute Incentives"
+        ],
+        "selectionCriteria": {
+          "skills": [
+            "Environmental Engineering",
+            "Sustainability",
+            "Project Management"
+          ],
+          "experience": "3+ years",
+          "rating": 4.1,
+          "location": {
+            "postcode": "1500",
+            "radius": "15 km"
+          }
         }
-    ],
-    "Hashes": [
-        {
-            "id": "f8b7",
-            "hashcode": "yb-kg5d78"
+      }
+    },
+    {
+      "id": "5",
+      "name": "FinServe Ltd.",
+      "history": "FinServe Ltd. is a financial services company offering a wide range of financial products.",
+      "businessId": "112233445",
+      "workStyles": [
+        "Team-Oriented",
+        "Remote"
+      ],
+      "values": [
+        "Integrity",
+        "Customer Service",
+        "Excellence"
+      ],
+      "workingConditions": {
+        "flexibility": [
+          "Flexible Hours",
+          "Work from Home"
+        ],
+        "location": [
+          "Remote",
+          "Hybrid"
+        ],
+        "culture": "A professional, yet friendly environment where employees are encouraged to excel.",
+        "mentalHealthSupport": true
+      },
+      "jobPosition": {
+        "title": "Financial Analyst",
+        "salary": {
+          "min": 4500,
+          "max": 6500,
+          "currency": "EUR"
+        },
+        "benefits": [
+          "Health Insurance",
+          "Performance Bonuses",
+          "Training and Development"
+        ],
+        "selectionCriteria": {
+          "skills": [
+            "Financial Modeling",
+            "Excel",
+            "Data Analysis"
+          ],
+          "experience": "3+ years",
+          "rating": 4.3,
+          "location": {
+            "postcode": "2000",
+            "radius": "30 km"
+          }
         }
-    ]
+      }
+    }
+  ],
+  "JobSeeker": [
+    {
+      "id": "JS98765",
+      "workStyles": [
+        "Collaborative",
+        "Remote Preferred"
+      ],
+      "values": [
+        "Innovation",
+        "Work-Life Balance"
+      ],
+      "workingConditions": {
+        "flexibility": [
+          "Remote",
+          "Flexible Hours"
+        ],
+        "location": {
+          "preferred": "Remote",
+          "acceptance": [
+            "Hybrid",
+            "Onsite within 30 km"
+          ]
+        },
+        "culture": "Diverse and inclusive environment with a focus on work-life balance",
+        "salaryExpectations": {
+          "min": 6500,
+          "max": 8500,
+          "currency": "EUR"
+        },
+        "benefitExpectations": [
+          "Health Insurance",
+          "Gym Membership",
+          "Paid Parental Leave"
+        ]
+      },
+      "headline": "Experienced Full Stack Developer",
+      "bio": "Experienced Full Stack Developer with 5+ years of experience in Java, Spring Boot, and Angular, seeking new opportunities in software development and eager to contribute to innovative projects. Passionate about creating scalable and efficient solutions, collaborating with cross-functional teams, and staying updated with the latest technologies. Open to remote and onsite positions. Let's connect and build something amazing together!",
+      "positionHistory": [
+        {
+          "position": "Full Stack Developer",
+          "company": "PreviousCompany",
+          "duration": "3 years",
+          "skills": [
+            "Java",
+            "Spring Boot",
+            "Angular"
+          ]
+        },
+        {
+          "position": "Senior Software Engineer",
+          "company": "NextCompany",
+          "duration": "2 years",
+          "skills": [
+            "Java",
+            "Spring Boot",
+            "Microservices"
+          ]
+        }
+      ],
+      "skills": [
+        "Java",
+        "Spring Boot",
+        "Microservices",
+        "AWS"
+      ],
+      "experience": "7+ years",
+      "distance": "25 km",
+      "hashcode": "ab-cd1234"
+    },
+    {
+      "id": "JS67890",
+      "workStyles": [
+        "Remote Preferred",
+        "Independent"
+      ],
+      "values": [
+        "Innovation",
+        "Customer-Centric"
+      ],
+      "workingConditions": {
+        "flexibility": [
+          "Remote",
+          "Flexible Hours"
+        ],
+        "location": {
+          "preferred": "Remote",
+          "acceptance": [
+            "Hybrid",
+            "Onsite within 50 km"
+          ]
+        },
+        "culture": "Dynamic and customer-focused environment",
+        "salaryExpectations": {
+          "min": 4500,
+          "max": 6500,
+          "currency": "EUR"
+        },
+        "benefitExpectations": [
+          "Health Insurance",
+          "Paid Vacation",
+          "Stock Options"
+        ]
+      },
+      "headline": "Senior Software Engineer",
+      "bio": "Experienced Full Stack Developer with 5+ years of experience in Java, Spring Boot, and Angular. Seeking new opportunities in software development to contribute to innovative projects. Passionate about creating scalable and efficient solutions, collaborating with cross-functional teams, and staying updated with the latest technologies. Open to remote and onsite positions. Let's connect and build something amazing together!",
+      "positionHistory": [
+        {
+          "position": "Software Engineer",
+          "company": "TechCompany",
+          "duration": "3 years",
+          "skills": [
+            "JavaScript",
+            "React",
+            "Node.js"
+          ]
+        }
+      ],
+      "skills": [
+        "JavaScript",
+        "Node.js",
+        "AWS"
+      ],
+      "experience": "6+ years",
+      "distance": "20 km"
+    }
+  ],
+  "Administration": [
+    {
+      "id": "1",
+      "login": {
+        "username": "admin_user",
+        "password": "securely_hashed_password"
+      }
+    }
+  ],
+  "Employee": [
+    {
+      "id": "1",
+      "hashcode": "",
+      "company": "Acme Technologies"
+    }
+  ],
+  "Hashes": [
+    {
+      "id": "f8b7",
+      "hashcode": "yb-kg5d78"
+    },
+    {
+      "id": "9094",
+      "hashcode": "13r-vybwqp"
+    },
+    {
+      "id": "0229",
+      "hashcode": "15y-oqphdo"
+    },
+    {
+      "id": "94fd",
+      "hashcode": "1jc-pig7oi"
+    }
+  ]
 }

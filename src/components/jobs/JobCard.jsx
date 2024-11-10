@@ -100,7 +100,7 @@ const JobCard = ({ job }) => {
           flexDirection: "column",
           gap: 2,
           padding: 2,
-          maxWidth: "600px",
+          width: "100%",
         }}
       >
         <CardContent>
@@ -174,15 +174,15 @@ const JobCard = ({ job }) => {
             Benefits: {job.jobPosition.benefits.join(", ")}
           </Typography>
           <Stack
-          direction="row"
-          spacing={2}
-          justifyContent="space-arround"
-          alignItems="center"
-          sx={{ mt: 2 }}
+            direction="row"
+            spacing={2}
+            justifyContent="space-arround"
+            alignItems="center"
+            sx={{ mt: 2 }}
 
           >
-          <Button variant="outlined" onClick={handleCloseModal}>Close</Button>
-          <Button variant="contained" >Apply Now</Button>
+            <Button variant="outlined" onClick={handleCloseModal}>Close</Button>
+            <Button variant="contained" >Apply Now</Button>
           </Stack>
         </DialogContent>
       </Dialog>
