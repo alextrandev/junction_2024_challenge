@@ -35,12 +35,16 @@ import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 
 import { useTheme } from "../ThemeContext";
+import Toast from "./utils/Toast";
+import { handleOpenToast } from "../store/toastSlice";
+import { useDispatch } from "react-redux";
 
 export default function Layout() {
   const navigate = useNavigate();
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
+  const dispatch = useDispatch();
 
   // Replace with actual auth logic
   const userRole = localStorage.getItem("userRole") || "guest";
@@ -62,6 +66,7 @@ export default function Layout() {
     setAnchorElUser(null); // Resetting menu state
     localStorage.removeItem("token");
     localStorage.removeItem("userRole");
+    dispatch(handleOpenToast({ message: "Logged out successfully", severity: "success" }));
     navigate("/");
   };
 
@@ -332,6 +337,7 @@ export default function Layout() {
           </Typography>
         </Container>
       </Box>
+      <Toast />
     </Box>
   );
 }

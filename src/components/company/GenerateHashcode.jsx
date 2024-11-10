@@ -1,8 +1,9 @@
-import { Box, Button, List, ListItem, TextField, Typography } from "@mui/material";
+import { Box, Button, List, ListItem, Snackbar, TextField, Typography } from "@mui/material";
 import { QRCodeSVG } from "qrcode.react";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createHash } from "../../store/hashcodeSlice";
+import { handleOpenToast } from "../../store/toastSlice";
 
 const GenerateHashcode = () => {
   const dispatch = useDispatch();
@@ -16,14 +17,15 @@ const GenerateHashcode = () => {
   const generateHashCode = async () => {
     try {
       await dispatch(createHash(companyId)).unwrap();
+      dispatch(handleOpenToast({ message: "Successfully generate QR-Code", severity: "success" }));
     } catch (err) {
-      console.error("Failed to generate hash:", err);
+      dispatch(handleOpenToast({ message: "Copied to clipboard", severity: "error" }));
     }
   };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(currentHash?.hashcode);
-    alert("QR-Code copied to clipboard!");
+    dispatch(handleOpenToast({ message: "Copied to clipboard", severity: "success" }));
   };
 
   return (
