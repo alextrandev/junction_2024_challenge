@@ -283,6 +283,53 @@ export default function Layout() {
                     Sign Up
                   </Button>
                 </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <MenuItem onClick={handleLogout}>
+                    <ListItemIcon>
+                      <BusinessIcon fontSize="small" />
+                    </ListItemIcon>
+                    <Typography textAlign="center">Sign up as Company</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleLogout}>
+                    <ListItemIcon>
+                      <PersonIcon fontSize="small" />
+                    </ListItemIcon>
+                    <Typography textAlign="center">Sign up as Job Seeker</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleLogout}>
+                    <ListItemIcon>
+                      <BadgeIcon fontSize="small" />
+                    </ListItemIcon>
+                    <Typography textAlign="center">Sign up as Employee</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={toggleTheme}>
+                    <ListItemIcon>
+                      {isDarkMode ? (
+                        <Brightness7Icon fontSize="small" />
+                      ) : (
+                        <Brightness4Icon fontSize="small" />
+                      )}
+                    </ListItemIcon>
+                    <Typography textAlign="center">
+                      {isDarkMode ? "Light" : "Dark"} Mode
+                    </Typography>
+                  </MenuItem>
+                </Menu>
               </Box>
             )}
           </Toolbar>

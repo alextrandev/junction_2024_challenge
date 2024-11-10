@@ -64,12 +64,11 @@ export default function SignInSelection() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          py: 2.4,
         }}
       >
         <Box
           sx={{
-            minHeight: "35vh",
+            minHeight: "25vh",
             display: "flex",
             maxWidth: "75%",
             flexDirection: { xs: "column", md: "row" },
