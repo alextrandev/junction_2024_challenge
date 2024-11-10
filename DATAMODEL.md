@@ -1,7 +1,5 @@
 # Users Data model (initial version)
 
-
-
 ```mermaid
 classDiagram
     direction LR
