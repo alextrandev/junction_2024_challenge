@@ -8,7 +8,8 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCompany } from "../../store/companySlice";
+import { setCurrentCompany } from "../../store/companySlice";
+import { handleOpenToast } from "../../store/toastSlice";
 
 export default function CultureEditDialog({ open, onClose }) {
   const dispatch = useDispatch();
@@ -72,7 +73,8 @@ export default function CultureEditDialog({ open, onClose }) {
             .map((item) => item.trim()),
         },
       };
-      await dispatch(updateCompany(formattedData)).unwrap();
+      dispatch(setCurrentCompany(formattedData));
+      dispatch(handleOpenToast({ message: "Company culture updated successfully", severity: "success" }));
       onClose();
     } catch (err) {
       console.error("Failed to update company culture:", err);

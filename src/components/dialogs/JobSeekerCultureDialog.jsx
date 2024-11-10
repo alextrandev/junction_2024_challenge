@@ -9,7 +9,8 @@ import {
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCompany } from "../../store/companySlice";
-import { updateJobSeeker } from "../../store/jobSeekerSlice";
+import { setCurrentJobSeeker, updateJobSeeker } from "../../store/jobSeekerSlice";
+import { handleOpenToast } from "../../store/toastSlice";
 
 export default function JobSeekerCultureDialog({ open, onClose }) {
   const dispatch = useDispatch();
@@ -122,7 +123,8 @@ export default function JobSeekerCultureDialog({ open, onClose }) {
           benefitExpectations: localEditData.workingConditions.benefitExpectations.split(",").map((item) => item.trim()),
         },
       };
-      await dispatch(updateJobSeeker(formattedData)).unwrap();
+      dispatch(setCurrentJobSeeker(formattedData));
+      dispatch(handleOpenToast({ message: "Job seeker work culture updated successfully", severity: "success" }));
       onClose();
     } catch (err) {
       console.error("Failed to update job seeker work culture:", err);

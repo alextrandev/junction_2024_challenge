@@ -8,7 +8,8 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateJobSeeker } from "../../store/jobSeekerSlice";
+import { setCurrentJobSeeker, updateJobSeeker } from "../../store/jobSeekerSlice";
+import { handleOpenToast } from "../../store/toastSlice";
 
 export default function JobSeekerProfileEditDialog({ open, onClose }) {
   const dispatch = useDispatch();
@@ -50,7 +51,8 @@ export default function JobSeekerProfileEditDialog({ open, onClose }) {
         skills: localEditData.skills.split(",").map((skill) => skill.trim()),
         // TODO: Add position history
       };
-      await dispatch(updateJobSeeker(formattedData)).unwrap();
+      dispatch(setCurrentJobSeeker(formattedData));
+      dispatch(handleOpenToast({ message: "Job seeker profile updated successfully", severity: "success" }));
       onClose();
     } catch (err) {
       console.error("Failed to update job search profile:", err);

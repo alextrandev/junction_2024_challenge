@@ -8,8 +8,11 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { handleOpenToast } from "../../store/toastSlice";
 
 export default function CompanyDataForm() {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: "",
     history: "",
@@ -86,17 +89,17 @@ export default function CompanyDataForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/Company", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      // const response = await fetch("http://localhost:3001/Company", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(formData),
+      // });
 
-      if (!response.ok) throw new Error("Failed to submit data");
+      // if (!response.ok) throw new Error("Failed to submit data");
 
-      alert("Company information submitted successfully!");
+      dispatch(handleOpenToast({ message: "Company data submitted", severity: "success" }));
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("Failed to submit company information");

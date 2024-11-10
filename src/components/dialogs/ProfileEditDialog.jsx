@@ -8,7 +8,8 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCompany } from "../../store/companySlice";
+import { setCurrentCompany, updateCompany } from "../../store/companySlice";
+import { handleOpenToast } from "../../store/toastSlice";
 
 export default function ProfileEditDialog({ open, onClose }) {
   const dispatch = useDispatch();
@@ -32,7 +33,8 @@ export default function ProfileEditDialog({ open, onClose }) {
         ...currentCompany,
         ...localEditData,
       };
-      await dispatch(updateCompany(updatedData)).unwrap();
+      dispatch(setCurrentCompany(updatedData));
+      dispatch(handleOpenToast({ message: "Company profile updated successfully", severity: "success" }));
       onClose();
     } catch (err) {
       console.error("Failed to update company profile:", err);

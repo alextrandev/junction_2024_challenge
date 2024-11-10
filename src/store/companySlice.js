@@ -14,16 +14,7 @@ export const fetchCompanies = createAsyncThunk(
 export const updateCompany = createAsyncThunk(
   "company/updateCompany",
   async (updatedData) => {
-    const response = await axios.put(
-      `http://localhost:3001/Company/${updatedData.id}`,
-      updatedData,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    return response.data;
+    return response.ok;
   }
 );
 
