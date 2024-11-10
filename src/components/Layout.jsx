@@ -295,19 +295,25 @@ export default function Layout() {
                     <ListItemIcon>
                       <BusinessIcon fontSize="small" />
                     </ListItemIcon>
-                    <Typography textAlign="center">Sign up as Company</Typography>
+                    <Typography textAlign="center">
+                      Sign up as Company
+                    </Typography>
                   </MenuItem>
                   <MenuItem onClick={handleLogout}>
                     <ListItemIcon>
                       <PersonIcon fontSize="small" />
                     </ListItemIcon>
-                    <Typography textAlign="center">Sign up as Job Seeker</Typography>
+                    <Typography textAlign="center">
+                      Sign up as Job Seeker
+                    </Typography>
                   </MenuItem>
                   <MenuItem onClick={handleLogout}>
                     <ListItemIcon>
                       <BadgeIcon fontSize="small" />
                     </ListItemIcon>
-                    <Typography textAlign="center">Sign up as Employee</Typography>
+                    <Typography textAlign="center">
+                      Sign up as Employee
+                    </Typography>
                   </MenuItem>
                   <MenuItem onClick={toggleTheme}>
                     <ListItemIcon>
