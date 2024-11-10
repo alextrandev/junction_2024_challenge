@@ -17,10 +17,13 @@ import {
 import { styled } from "@mui/material/styles";
 import { Preview } from "@mui/icons-material";
 import JobModal from "./JobModal";
+import { useNavigate } from "react-router-dom";
 
 const JobCard = ({ job }) => {
   // Extract location details safely
   const { postcode, radius } = job.jobPosition.selectionCriteria.location;
+
+  const navigate = useNavigate();
 
   // State for controlling the modal
   const [openModal, setOpenModal] = useState(false);
@@ -152,6 +155,7 @@ const JobCard = ({ job }) => {
                   variant="contained"
                   color="primary"
                   fullWidth
+                  onClick={() => navigate(`/jobseeker/match`)}
                 >
                   Apply Now
                 </Button>
@@ -174,15 +178,21 @@ const JobCard = ({ job }) => {
             Benefits: {job.jobPosition.benefits.join(", ")}
           </Typography>
           <Stack
-          direction="row"
-          spacing={2}
-          justifyContent="space-arround"
-          alignItems="center"
-          sx={{ mt: 2 }}
-
+            direction="row"
+            spacing={2}
+            justifyContent="space-arround"
+            alignItems="center"
+            sx={{ mt: 2 }}
           >
-          <Button variant="outlined" onClick={handleCloseModal}>Close</Button>
-          <Button variant="contained" >Apply Now</Button>
+            <Button variant="outlined" onClick={handleCloseModal}>
+              Close
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => navigate(`/jobseeker/match`)}
+            >
+              Apply Now
+            </Button>
           </Stack>
         </DialogContent>
       </Dialog>
