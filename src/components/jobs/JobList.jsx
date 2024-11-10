@@ -14,9 +14,10 @@ const JobList = () => {
   const dispatch = useDispatch();
   const { jobs, loading, error } = useSelector((state) => state.jobs);
 
-  useEffect(() => {
-    dispatch(fetchJobs());
-  }, [dispatch]);
+  // this branch us mock db
+  // useEffect(() => {
+  //   dispatch(fetchJobs());
+  // }, [dispatch]);
 
   return (
     <Box sx={{ padding: 3 }}>

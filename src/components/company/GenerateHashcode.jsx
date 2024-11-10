@@ -10,21 +10,27 @@ const GenerateHashcode = () => {
   const { status, error, currentHash } = useSelector((state) => state.hashes);
   const [contractStartDate, setContractStartDate] = useState("");
   const qrCodeRef = useRef();
+  const [showHash, setShowHash] = useState(false);
 
   // Get companyId from localStorage or wherever you store it
   const companyId = localStorage.getItem("companyId") || 1;
 
   const generateHashCode = async () => {
     try {
-      await dispatch(createHash(companyId)).unwrap();
-      dispatch(handleOpenToast({ message: "Successfully generate QR-Code", severity: "success" }));
+      // this branch use mock data
+      setShowHash(true);
+      dispatch("1c6-ad74hp");
+      // await dispatch(createHash(companyId)).unwrap();
+      // dispatch(handleOpenToast({ message: "Successfully generate QR-Code", severity: "success" }));
     } catch (err) {
       dispatch(handleOpenToast({ message: "Copied to clipboard", severity: "error" }));
     }
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(currentHash?.hashcode);
+    // navigator.clipboard.writeText(currentHash?.hashcode);
+    // fake hashcode
+    navigator.clipboard.writeText("1c6-ad74hp");
     dispatch(handleOpenToast({ message: "Copied to clipboard", severity: "success" }));
   };
 
@@ -88,7 +94,7 @@ const GenerateHashcode = () => {
         </Typography>
       )}
 
-      {currentHash?.hashcode && (
+      {showHash && (
         <Box
           sx={{
             mt: 3,
@@ -97,7 +103,7 @@ const GenerateHashcode = () => {
             alignItems: "center",
           }}
         >
-          <QRCodeSVG ref={qrCodeRef} value={currentHash.hashcode} size={256} />
+          <QRCodeSVG ref={qrCodeRef} value={"1c6-ad74hp"} size={256} />
           <Button variant="contained" onClick={copyToClipboard} sx={{ mt: 2 }}>
             Copy QR Code to Clipboard
           </Button>

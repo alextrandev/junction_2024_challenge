@@ -10,7 +10,7 @@ export const createHash = createAsyncThunk(
   "hashes/create",
   async (companyId = 1, { rejectWithValue }) => {
     try {
-      const hashcode = generateHash(companyId);
+      const hashcode = "1c6-ad74hp"; // Mock hashcode
       const response = await axios.post("http://localhost:3001/Hashes", {
         hashcode,
       });
@@ -27,8 +27,8 @@ export const fetchCompanyHashes = createAsyncThunk(
   async (companyId, { rejectWithValue }) => {
     try {
       const response = await axios.get("http://localhost:3001/Hashes");
-      console.log("All Hashes:", response.data);
-      console.log("Filtering for Company ID:", companyId);
+      // console.log("All Hashes:", response.data);
+      // console.log("Filtering for Company ID:", companyId);
       const filteredHashes = response.data.filter(
         (hash) => extractCompanyId(hash.hashcode) === companyId
       );
@@ -83,7 +83,7 @@ export const useHash = createAsyncThunk(
 const hashesSlice = createSlice({
   name: "hashes",
   initialState: {
-    items: [],
+    items: ["1c6-ad74hp"],
     status: "idle",
     error: null,
     currentHash: null,

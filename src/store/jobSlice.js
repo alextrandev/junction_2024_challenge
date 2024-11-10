@@ -1,6 +1,7 @@
 // src/features/jobs/jobsSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import mockdb from "../../db.json";
 
 // Async thunk to simulate fetching jobs from an API
 export const fetchJobs = createAsyncThunk("jobs/fetchJobs", async () => {
@@ -9,7 +10,7 @@ export const fetchJobs = createAsyncThunk("jobs/fetchJobs", async () => {
 });
 
 const initialState = {
-  jobs: [], // Initially empty; will be populated by fetchJobs
+  jobs: mockdb.Company, // Initially empty; will be populated by fetchJobs
   searchQuery: "",
   selectedJob: null,
   status: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'

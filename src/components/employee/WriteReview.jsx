@@ -47,22 +47,25 @@ const WriteReview = () => {
   };
 
   const handleSubmitReview = async () => {
-    try {
-      setIsSubmitting(true);
-      const result = await dispatch(
-        useHash({ hashcode: debouncedHashcode })
-      ).unwrap();
+    // this branch use mock data
+    dispatch(handleOpenToast({ message: "Review submitted", severity: "success" }));
+    navigate("/employee/dashboard");
+    // try {
+    //   setIsSubmitting(true);
+    //   const result = await dispatch(
+    //     useHash({ hashcode: debouncedHashcode })
+    //   ).unwrap();
 
-      if (result) {
-        dispatch(handleOpenToast({ message: "Review submitted", severity: "success" }));
-        navigate("/employee/dashboard"); // Clear the form
-      }
-    } catch (error) {
-      setHashcodeError("Failed to submit review. Please try again.");
-      dispatch(handleOpenToast({ message: { hashcodeError }, severity: "error" }));
-    } finally {
-      setIsSubmitting(false);
-    }
+    //   if (result) {
+    //     dispatch(handleOpenToast({ message: "Review submitted", severity: "success" }));
+    //     navigate("/employee/dashboard"); // Clear the form
+    //   }
+    // } catch (error) {
+    //   setHashcodeError("Failed to submit review. Please try again.");
+    //   dispatch(handleOpenToast({ message: { hashcodeError }, severity: "error" }));
+    // } finally {
+    //   setIsSubmitting(false);
+    // }
   };
 
   useEffect(() => {
