@@ -12,10 +12,12 @@ import {
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 const JobApplicationForm = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
+  const navigate = useNavigate();
 
   // Provide a default value (empty object) to avoid reading from undefined
   const {
@@ -150,9 +152,8 @@ const JobApplicationForm = () => {
           <TextareaAutosize
             aria-label="minimum height"
             minRows={5}
-            
             placeholder="Tell us about yourself"
-            style={{ width: '100%' }}
+            style={{ width: "100%" }}
             name="description"
             fullWidth
             type="file"
@@ -163,7 +164,7 @@ const JobApplicationForm = () => {
           />
         </Grid>
 
-        <Grid size={6}>
+        <Grid size={4}>
           <Button
             type="submit"
             variant="contained"
@@ -172,6 +173,18 @@ const JobApplicationForm = () => {
             disabled={loading}
           >
             {loading ? <CircularProgress size={24} /> : "Submit Application"}
+          </Button>
+        </Grid>
+        <Grid size={4}>
+          <Button
+            type="submit"
+            variant="outlined"
+            color="error"
+            fullWidth
+            disabled={loading}
+            onClick={() => navigate(-1)}
+          >
+            {loading ? <CircularProgress size={24} /> : "Cancel"}
           </Button>
         </Grid>
 
