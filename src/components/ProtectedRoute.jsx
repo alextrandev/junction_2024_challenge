@@ -34,12 +34,12 @@ export default function ProtectedRoute({
 
   // Check if user is authenticated
   if (!localStorage.getItem("token")) {
-    return <Navigate to="/signin" replace />;
+    return <Navigate to="/" replace />;
   }
 
   // Check if user has the correct role
   if (storedUserRole !== userType) {
-    return <Navigate to="/signin" replace />;
+    return <Navigate to="/" replace />;
   }
 
   return children;

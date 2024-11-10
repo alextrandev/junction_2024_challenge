@@ -19,8 +19,8 @@ const GenerateHashcode = () => {
     try {
       // this branch use mock data
       setShowHash(true);
-      dispatch("1c6-ad74hp");
-      // await dispatch(createHash(companyId)).unwrap();
+      // dispatch("1c6-ad74hp");
+      dispatch(createHash('f088')).unwrap();
       // dispatch(handleOpenToast({ message: "Successfully generate QR-Code", severity: "success" }));
     } catch (err) {
       dispatch(handleOpenToast({ message: "Copied to clipboard", severity: "error" }));

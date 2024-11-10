@@ -10,11 +10,11 @@ export const createHash = createAsyncThunk(
   "hashes/create",
   async (companyId = 1, { rejectWithValue }) => {
     try {
-      const hashcode = "1c6-ad74hp"; // Mock hashcode
-      const response = await axios.post("http://localhost:3001/Hashes", {
-        hashcode,
-      });
-      return response.data;
+      // const hashcode = "1c6-ad74hp"; // Mock hashcode
+      // const response = await axios.post("http://localhost:3001/Hashes", {
+      //   hashcode,
+      // });
+      return "1c6-ad74hp";
     } catch (error) {
       return rejectWithValue(error.message);
     }

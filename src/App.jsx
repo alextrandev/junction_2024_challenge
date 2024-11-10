@@ -29,8 +29,7 @@ function App() {
       <Router>
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<Navigate to="/signin" />} />
-            <Route path="/signin" element={<SignInSelection />} />
+            <Route path="/" element={<SignInSelection />} />
 
             {/* Company Routes */}
             <Route path="/company">
@@ -133,7 +132,7 @@ function App() {
             </Route>
 
             {/* Catch all route */}
-            <Route path="*" element={<Navigate to="/signin" replace />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
       </Router>

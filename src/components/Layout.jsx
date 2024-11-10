@@ -276,7 +276,7 @@ export default function Layout() {
             ) : (
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
-                  <Button component={Link} to="/signin" sx={{ color: "white" }}>
+                  <Button component={Link} to="/" sx={{ color: "white" }}>
                     Sign In
                   </Button>
                   <Button onClick={handleOpenUserMenu} sx={{ color: "white" }}>
