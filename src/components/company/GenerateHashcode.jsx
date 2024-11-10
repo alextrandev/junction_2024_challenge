@@ -1,38 +1,31 @@
-import { Alert, Box, Button, List, ListItem, Snackbar, TextField, Typography } from "@mui/material";
+import { Box, Button, List, ListItem, Snackbar, TextField, Typography } from "@mui/material";
 import { QRCodeSVG } from "qrcode.react";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createHash } from "../../store/hashcodeSlice";
+import { handleOpenToast } from "../../store/toastSlice";
 
 const GenerateHashcode = () => {
   const dispatch = useDispatch();
   const { status, error, currentHash } = useSelector((state) => state.hashes);
   const [contractStartDate, setContractStartDate] = useState("");
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
   const qrCodeRef = useRef();
 
   // Get companyId from localStorage or wherever you store it
   const companyId = localStorage.getItem("companyId") || 1;
 
-  const handleOpenSnakebar = (status, msg) => {
-    setSnackbarOpen(true);
-  };
-
   const generateHashCode = async () => {
     try {
       await dispatch(createHash(companyId)).unwrap();
+      dispatch(handleOpenToast({ message: "Successfully generate QR-Code", severity: "success" }));
     } catch (err) {
-      console.error("Failed to generate hash:", err);
+      dispatch(handleOpenToast({ message: "Copied to clipboard", severity: "error" }));
     }
   };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(currentHash?.hashcode);
-    setSnackbarOpen(true);
-  };
-
-  const handleCloseSnackbar = () => {
-    setSnackbarOpen(false);
+    dispatch(handleOpenToast({ message: "Copied to clipboard", severity: "success" }));
   };
 
   return (
@@ -44,21 +37,6 @@ const GenerateHashcode = () => {
         alignItems: "center",
       }}
     >
-      <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={6000}
-        onClose={handleCloseSnackbar}
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-      >
-        <Alert
-          onClose={handleCloseSnackbar}
-          severity="success"
-          variant="filled"
-          sx={{ width: '100%' }}
-        >
-          Copied to clipboard!
-        </Alert>
-      </Snackbar>
       <Typography variant="h2" gutterBottom sx={{ textAlign: "left" }}>
         Generate QR-Code
       </Typography>

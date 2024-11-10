@@ -35,6 +35,7 @@ import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 
 import { useTheme } from "../ThemeContext";
+import Toast from "./utils/Toast";
 
 export default function Layout() {
   const navigate = useNavigate();
@@ -376,6 +377,7 @@ export default function Layout() {
           </Typography>
         </Container>
       </Box>
+      <Toast />
     </Box>
   );
 }
