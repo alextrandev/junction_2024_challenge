@@ -63,28 +63,30 @@ export default function SignInSelection() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          alignItems: "center",
           py: 2.4,
         }}
       >
         <Box
           sx={{
-            minHeight: "25vh",
+            minHeight: "35vh",
             display: "flex",
-            flexDirection: { xs: "column", md: "row" }, // Column on small screens, row on larger screens
+            maxWidth: "75%",
+            flexDirection: { xs: "column", md: "row" },
             justifyContent: "center",
             alignItems: "center",
             py: 2.4,
           }}
         >
           {/* Left Column - Title and Paragraph */}
-          <Box sx={{ flex: 1, textAlign: "center", mb: { xs: 4, md: 0 } }}>
+          <Box sx={{ flex: 2, textAlign: "left", mb: { xs: 4, md: 0 } }}>
             <Typography
               variant="h1"
               component="h1"
               gutterBottom
               sx={{ mb: 2, fontWeight: "bold" }}
             >
-              Redefine Work Well-being
+              Redefine <br /> Work Well-being
             </Typography>
             <Typography variant="body1" sx={{ mb: 4 }}>
               At ThriveConnect, we believe that work well-being is essential to
@@ -128,7 +130,7 @@ export default function SignInSelection() {
                 <Card
                   sx={{
                     height: "100%",
-                    width: "80%",
+                    width: "90%",
                     display: "flex",
                     flexDirection: "column",
                     borderRadius: 1,
@@ -211,7 +213,6 @@ export default function SignInSelection() {
                     </Button>
                   </CardContent>
                 </Card>
-
               </Grid>
             ))}
           </Grid>
