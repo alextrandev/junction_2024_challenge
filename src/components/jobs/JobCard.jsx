@@ -184,9 +184,6 @@ const JobCard = ({ job }) => {
             alignItems="center"
             sx={{ mt: 2 }}
           >
-            <Button variant="outlined" onClick={handleCloseModal}>
-              Close
-            </Button>
             <Button
               variant="contained"
               onClick={() => navigate(`/jobseeker/match`)}
@@ -194,9 +191,9 @@ const JobCard = ({ job }) => {
               Apply Now
             </Button>
 
-          >
-            <Button variant="outlined" onClick={handleCloseModal}>Close</Button>
-            <Button variant="contained" >Apply Now</Button>
+            <Button variant="outlined" onClick={handleCloseModal}>
+              Close
+            </Button>
           </Stack>
         </DialogContent>
       </Dialog>
