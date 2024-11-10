@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import mockdb from "../../db.json";
 
 // Async thunks
 export const fetchJobSeekers = createAsyncThunk(
@@ -28,14 +29,14 @@ export const updateJobSeeker = createAsyncThunk(
 
 // Initial state with stats
 const initialState = {
-  jobSeekers: [],
-  currentJobSeeker: null,
+  jobSeekers: mockdb.JobSeeker,
+  currentJobSeeker: mockdb.JobSeeker[0],
   status: "idle",
   error: null,
   stats: {
     totalJobs: 0,
-    totalApplications: 0,
-    activeListings: 0,
+    totalApplications: 3,
+    activeListings: 2,
     interviewsScheduled: 0,
   },
 };

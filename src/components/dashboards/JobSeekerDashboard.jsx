@@ -63,9 +63,10 @@ export default function JobSeekerDashboard() {
   //   { id: 3, title: "Product Manager", applicants: 15 },
   // ]);
 
-  useEffect(() => {
-    dispatch(fetchJobSeekers());
-  }, [dispatch]);
+  // this branch use mockup data
+  // useEffect(() => {
+  //   dispatch(fetchJobSeekers());
+  // }, [dispatch]);
 
   const getStatusColor = (status) => {
     switch (status) {

@@ -62,9 +62,10 @@ export default function CompanyDashboard() {
     return []; // This should be populated from your backend when you implement that feature
   }, []);
 
-  useEffect(() => {
-    dispatch(fetchCompanies());
-  }, [dispatch]);
+  // this branch use mock data
+  // useEffect(() => {
+  //   dispatch(fetchCompanies());
+  // }, [dispatch]);
 
   // Update stats based on actual data
   useEffect(() => {

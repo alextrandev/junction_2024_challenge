@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import mockdb from "../../db.json";
 
 // Async thunks
 export const fetchCompanies = createAsyncThunk(
@@ -28,8 +29,8 @@ export const updateCompany = createAsyncThunk(
 
 // Initial state with stats
 const initialState = {
-  companies: [],
-  currentCompany: null,
+  companies: mockdb.Company,
+  currentCompany: mockdb.Company[0],
   status: "idle",
   error: null,
   stats: {
