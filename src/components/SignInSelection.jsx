@@ -67,7 +67,7 @@ export default function SignInSelection() {
           sx={{
             minHeight: "35vh",
             display: "flex",
-            maxWidth: "90%",
+            maxWidth: "75%",
             flexDirection: { xs: "column", md: "row" },
             justifyContent: "center",
             alignItems: "center",
@@ -75,7 +75,7 @@ export default function SignInSelection() {
           }}
         >
           {/* Left Column - Title and Paragraph */}
-          <Box sx={{ flex: 1, textAlign: "left", mb: { xs: 4, md: 0 } }}>
+          <Box sx={{ flex: 2, textAlign: "left", mb: { xs: 4, md: 0 } }}>
             <Typography
               variant="h1"
               component="h1"
@@ -126,7 +126,7 @@ export default function SignInSelection() {
                 <Card
                   sx={{
                     height: "100%",
-                    width: "80%",
+                    width: "90%",
                     display: "flex",
                     flexDirection: "column",
                     borderRadius: 1,
