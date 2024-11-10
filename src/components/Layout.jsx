@@ -193,8 +193,11 @@ export default function Layout() {
               />
             </Typography>
 
-            {/* Desktop Navigation */}
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            {/* Empty space to push navigation to the right */}
+            <Box sx={{ flexGrow: 1 }} />
+
+            {/* Main Navigation */}
+            <Box sx={{ display: { xs: "none", md: "flex" }, mr: 2 }}>
               {isAuthenticated &&
                 getNavItems().map((item) => (
                   <Button
@@ -215,7 +218,7 @@ export default function Layout() {
                 ))}
             </Box>
 
-            {/* User Menu */}
+            {/* User Profile */}
             {isAuthenticated ? (
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
@@ -275,59 +278,6 @@ export default function Layout() {
                     Sign Up
                   </Button>
                 </Tooltip>
-                <Menu
-                  sx={{ mt: "45px" }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  <MenuItem onClick={handleLogout}>
-                    <ListItemIcon>
-                      <BusinessIcon fontSize="small" />
-                    </ListItemIcon>
-                    <Typography textAlign="center">
-                      Sign up as Company
-                    </Typography>
-                  </MenuItem>
-                  <MenuItem onClick={handleLogout}>
-                    <ListItemIcon>
-                      <PersonIcon fontSize="small" />
-                    </ListItemIcon>
-                    <Typography textAlign="center">
-                      Sign up as Job Seeker
-                    </Typography>
-                  </MenuItem>
-                  <MenuItem onClick={handleLogout}>
-                    <ListItemIcon>
-                      <BadgeIcon fontSize="small" />
-                    </ListItemIcon>
-                    <Typography textAlign="center">
-                      Sign up as Employee
-                    </Typography>
-                  </MenuItem>
-                  <MenuItem onClick={toggleTheme}>
-                    <ListItemIcon>
-                      {isDarkMode ? (
-                        <Brightness7Icon fontSize="small" />
-                      ) : (
-                        <Brightness4Icon fontSize="small" />
-                      )}
-                    </ListItemIcon>
-                    <Typography textAlign="center">
-                      {isDarkMode ? "Light" : "Dark"} Mode
-                    </Typography>
-                  </MenuItem>
-                </Menu>
               </Box>
             )}
           </Toolbar>
@@ -341,7 +291,7 @@ export default function Layout() {
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true, // Better mobile performance
+          keepMounted: true,
         }}
         sx={{
           display: { xs: "block", sm: "none" },
