@@ -14,6 +14,7 @@ import JobSeekerDashboard from "./components/dashboards/JobSeekerDashboard";
 import WriteReview from "./components/employee/WriteReview";
 import WriteReviewTooSoon from "./components/employee/WriteReviewTooSoon";
 import JobSearch from "./components/jobseeker/JobSearch";
+import JobApplicationForm from "./components/jobseeker/JobApplicationForm";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { ThemeProvider } from "./ThemeContext";
@@ -90,6 +91,14 @@ function App() {
                 element={
                   <ProtectedRoute userType="jobseeker">
                     <JobseekerMatchPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="application"
+                element={
+                  <ProtectedRoute userType="jobseeker">
+                    <JobApplicationForm />
                   </ProtectedRoute>
                 }
               />

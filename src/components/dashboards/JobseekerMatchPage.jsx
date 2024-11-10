@@ -38,8 +38,10 @@ const SidebarCard = styled(Card)(({ theme }) => ({
 }));
 
 import { Company } from "../../../db.json";
+import { useNavigate } from "react-router-dom";
 
 const JobseekerMatchPage = () => {
+  const navigate = useNavigate();
   const company = Company[0];
 
   const matchScoreSections = [
@@ -178,7 +180,11 @@ const JobseekerMatchPage = () => {
           <DetailCard elevation={2}>
             <Grid container spacing={2}>
               <Grid item>
-                <Button variant="contained" size="large">
+                <Button
+                  variant="contained"
+                  size="large"
+                  onClick={() => navigate(`/jobseeker/application`)}
+                >
                   Apply Now
                 </Button>
               </Grid>
