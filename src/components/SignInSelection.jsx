@@ -14,9 +14,12 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/aava_logo_new.png";
+import { useDispatch } from "react-redux";
+import { handleOpenToast } from "../store/toastSlice";
 
 export default function SignInSelection() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const options = [
     {
@@ -48,6 +51,7 @@ export default function SignInSelection() {
       "userRole",
       option.title.toLowerCase().replaceAll(" ", "")
     );
+    dispatch(handleOpenToast({ message: `Successfully logged in as ${option.title}`, severity: "success" }));
     navigate(option.path);
   };
 

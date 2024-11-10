@@ -11,7 +11,7 @@ export const toastSlice = createSlice({
   initialState,
   reducers: {
     handleCloseToast: (state) => {
-      state.open === false;
+      state.open = false;
     },
     handleOpenToast: (state, action) => {
       state.open = true;

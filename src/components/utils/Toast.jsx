@@ -1,5 +1,6 @@
 import { Alert, Snackbar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
+import { handleCloseToast } from "../../store/toastSlice";
 
 export default function Toast() {
   const snackbarOpen = useSelector((state) => state.toast.open);
@@ -10,7 +11,7 @@ export default function Toast() {
   return (
     <Snackbar
       open={snackbarOpen}
-      autoHideDuration={6000}
+      autoHideDuration={5000}
       onClose={() => dispatch(handleCloseToast())}
       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
     >
