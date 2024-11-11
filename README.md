@@ -3,6 +3,14 @@ This is a challenge project for Junction Hackathon 2024 - Going Offline. The top
 
 _Our solution anonymously matches companies and job seekers by aligning values, work styles, and benefits, and includes a secure rating system. Companies can gather regular, anonymous feedback, ensuring up-to-date, fair insights on workplace conditions without compromising employee privacy._
 
+## Demo
+Checkout this Youtube video to see how it works:<br/>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BXPmU39od5M?si=ObQr0nymZOgyY-D5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+  [View on youtube: https://www.youtube.com/watch?v=BXPmU39od5M](https://www.youtube.com/watch?v=BXPmU39od5M)
+</iframe>
+
+### Here is the live demo: [https://junction2024.alextran.dev/](https://junction2024.alextran.dev/)
+
 ## The challenge
 Your mission is to create an app where employees can discover job opportunities that align with their personal values, work styles, and mental well-being needs. Both employees and companies will create anonymous profiles, which are matched based on shared priorities like mental health support, flexible working conditions, and workplace culture.
 
@@ -14,11 +22,6 @@ You can leverage various sources to understand which skills and cultural aspects
 
 ## Problem and Real-World Impact
 Our solution focuses on helping employees discover job opportunities that align with their personal values, work styles, and mental well-being needs. By anonymously matching job seekers with companies based on these factors, it eliminates biases related to gender, age, or background. Both parties are evaluated on compatibility, promoting fairness and diversity in hiring. Job seekers can find roles that support their values and well-being, while companies can identify candidates who fit their culture. Additionally, the platform fosters honest feedback through an **anonymous review verification system**, gathering genuine reviews that contribute to improving company cultures and employee satisfaction.
-
-<!-- ## Main user: 
-  - Job Seekers: talents who visit the platform to look for the most awesome companies and job positions
-  - Companies: employer will fill in their companies profiles and match with the best talents
-  - Employee: Current employee will leave review for their company to benefits their future job search and help out fellow job seekers -->
   
 ## Features:
 - **Anonymous Job Matching**: Job seekers and companies are anonymously matched based on preferences and skills. A match score is calculated based on work styles, location, salary, and culture. Identities are only revealed after a successful interview, ensuring privacy and reducing bias.  
@@ -31,7 +34,7 @@ Our solution focuses on helping employees discover job opportunities that align 
 Future plans include expanding the anonymous review system for more detailed company culture feedback, refining the NLP-based matching algorithm for personalized pairings, and updating the review process for more frequent feedback. AI tools will automate recruitment, enhancing efficiency, user experience, and transparency.
 
 ## Technologies used
-The solution uses **IBM’s Natural Language Processing (NLP)** for job matching, leveraging sentiment analysis, skill gap analysis, and job recommendations to streamline the process. This enables unbiased matching based on shared preferences and skills. 
+The solution uses **Google paltform’s Natural Language Processing (NLP)** for job matching, leveraging sentiment analysis, skill gap analysis, and job recommendations to streamline the process. This enables unbiased matching based on shared preferences and skills. 
 
 Languages:
 - JavaScript
@@ -42,15 +45,17 @@ Libraries and frameworks:
 - Material UI
 - Redux
 
+Data model: [here](DATAMODEL.md)
+
 ## Setup and usage
 
-<!-- **Live page [here](https://alextran.dev)** -->
+**Live page [here](https://junction2024.alextran.dev/)**
 
 **To host project locally**
 - Clone the project: ```git clone https://github.com/alextrandev/junction_2024_challenge.git```
 - Change working directory ```cd junction_2024_challenge```
 - Install dependencies ```npm install```
-- Serve json-server in local host ```npm run start-json```
+- Serve json-server in local host ```npm run start-json``` _Make sure port 3001 is not in use_
 - Serve project in local host ```npm run dev```
 
 ## Screenshot
@@ -78,5 +83,6 @@ The Job search processes are entirely anonymous. Job seekers will not have to be
 
 ## Authors and acknowledgment
 
+- Special thank to our mentor (Martin Holland)[https://github.com/martin-holland]
 - Thanks [Junction](https://www.hackjunction.com/) 2024 crews and organizer for the wonderful event.
-- Thanks Junction's partner [Aava](https://www.aava.fi/) for the wonderful challenge and all the help from booth team.
+- Thanks Junction's partner [Aava](https://www.aava.fi/) for the wonderful challenge and all the help from Aava's booth.
