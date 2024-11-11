@@ -5,9 +5,8 @@ _Our solution anonymously matches companies and job seekers by aligning values, 
 
 ## Demo
 Checkout this Youtube video to see how it works:<br/>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BXPmU39od5M?si=ObQr0nymZOgyY-D5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-  [View on youtube: https://www.youtube.com/watch?v=BXPmU39od5M](https://www.youtube.com/watch?v=BXPmU39od5M)
-</iframe>
+[![Youtube](src/assets/screenshots/Youtube-preview.png)](https://www.youtube.com/watch?v=BXPmU39od5M)
+[youtube.com/watch?v=BXPmU39od5M](https://www.youtube.com/watch?v=BXPmU39od5M)
 
 ### Here is the live demo: [https://junction2024.alextran.dev/](https://junction2024.alextran.dev/)
 
